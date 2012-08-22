@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="sendArea" type="DetailAreaUnit">
+		<Case value="SEND">
+			<Operaters>
+				<Operater>
+					<Text>发送</Text>
+					<Method>send</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>定时发送</Text>
+					<Method>fixedTimeSend</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>发送并保存</Text>
+					<Method>sendAndSave</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存发送信息</Text>
+					<Method>saveSend</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>提取历史信息</Text>
+					<Method>openHistoryWindow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>通讯录</Text>
+					<Method>openAddrListWindow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关系人员</Text>
+					<Method>openPersonWindow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			
+			<Fields>
+				<Field name="wordNum" xtype="textfield">
+				    <Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="num" xtype="textfield">
+				    <Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="sendTime" xtype="datefield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.getDate()</Default>
+				</Field>
+				<Field name="sendH" xtype="numberfield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.formatDateTime(DateUtil.getDate()).substring(11,13)</Default>
+				</Field>
+				<Field name="sendS" xtype="numberfield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.formatDateTime(DateUtil.getDate()).substring(14,16)</Default>
+				</Field>
+				<Field name="sendI" xtype="numberfield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.formatDateTime(DateUtil.getDate()).substring(17,19)</Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>	
+</AppConfig>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>发送</Text>
+					<Method>sendAgain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>转发</Text>
+					<Method>toEdit</Method>
+					<ConstParam>toEdit</ConstParam>
+				</Operater>
+				<DbClickOperater>
+					<Text>转发</Text>
+					<Method>toEdit</Method>
+					<ConstParam>toEdit</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>deleteSendedOut</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			<Operaters>				
+			</Operaters>
+		</Case>
+	</Area>	
+	<Area id="editArea" type="DetailAreaUnit">
+		<Case value="toEdit">
+			<Operaters>
+				<Operater>
+					<Text>发送</Text>
+					<Method>editSend</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>定时发送</Text>
+					<Method>fixedTimeSend</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存并发送</Text>
+					<Method>sendAndSave</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>存草稿</Text>
+					<Method>saveSend</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="wordNum" xtype="textfield">
+				    <Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="num" xtype="textfield">
+				    <Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="sendTime" xtype="datefield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.getDate()</Default>
+				</Field>
+				<Field name="sendH" xtype="numberfield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.formatDateTime(DateUtil.getDate()).substring(11,13)</Default>
+				</Field>
+				<Field name="sendS" xtype="numberfield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.formatDateTime(DateUtil.getDate()).substring(14,16)</Default>
+				</Field>
+				<Field name="sendI" xtype="numberfield">
+				    <Enabled>true</Enabled>
+					<Default>DateUtil.formatDateTime(DateUtil.getDate()).substring(17,19)</Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	<Area id="telArea" type="ListAreaUnit">
+		<Case value="toEdit">
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>openNewWindow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>通信录</Text>
+					<Method>openAddrListWindow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>企业人员</Text>
+					<Method>openPersonWindow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关系企业</Text>
+					<Method>openAccountWindow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>移除</Text>
+					<Method>deleteTel</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>	
+</AppConfig>

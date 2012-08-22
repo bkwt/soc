@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterBeanDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterBeanDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出一条</Text>
+					<Method>opExportConfigData</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出查询出的</Text>
+					<Method>opExportAllConfigData</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="detailBeanArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="componentId" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="auditCheckFlowKindArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterCheckFlow</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterCheckFlow</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewCheckFlowKindWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyCheckFlowKinds</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteCheckFlowKinds</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newCheckFlowKindArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewCheckFlowKind</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="detailCheckFlowKindArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backBeanDetail</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="auditCheckFlowArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewCheckFlowWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyCheckFlows</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteCheckFlows</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newCheckFlowArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewCheckFlow</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="flowArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Title>审核流程定义</Title>
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>enterAddNew</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyAuditFlows</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteAuditFlows</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>测试</Text>
+					<Method>opTestAudit</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="detailAuditFlowArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+		<Case value="ADDNEW">
+			<Title>新增审核流程</Title>
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewAuditFlow</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="componentId" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default>getAppContext('componentId')</Default>
+				</Field>
+				<Field name="flowId" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default>"自动生成"</Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="auditRuleArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Title>规则定义</Title>
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opSaveAuditRuleExpression</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="ADDNEW">
+			<Hide>true</Hide>
+		</Case>
+	</Area>
+	
+	<Area id="auditStepArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Title>审核步骤定义</Title>
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showAddNew</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyAuditSteps</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteAuditSteps</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="ADDNEW">
+			<Hide>true</Hide>
+		</Case>
+	</Area>
+	
+	<Area id="newAuditStepArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Title></Title>
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewAuditStep</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNewAuditStepAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="userName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

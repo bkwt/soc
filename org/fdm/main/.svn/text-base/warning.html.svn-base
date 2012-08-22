@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/call_eventmanageservice.js'></script>
+</head>
+<body>
+<div id=demo style=overflow:hidden;height:100%;width:100%>
+<div id=demo1>
+<table width="100%" border="0">
+	<tr id="TR_TMP" style="font-size:13;display:none">
+		<td><img src="/SOC/org/fdm/images/desktop/project_dian.gif"></img> </td>
+		<td width="100%"><a href="#"></a>
+		</td>
+	</tr>
+	<tr id="TR_DIAN" style="display:none">
+		<td colspan="2" background="/SOC/org/fdm/images/desktop/dian.gif"></td>
+	</tr>
+</table>
+</div>
+<div id=demo2></div>
+</div>
+
+
+</body>
+
+   <script>
+   var TR_TMP=document.getElementById('TR_TMP');
+   var TR_DIAN=document.getElementById('TR_DIAN');
+   call_eventmanageservice.getAllEvents({
+		callback:function(list) {
+		 for(var i=0;i<list.length;++i)
+			{
+				var newTR=TR_TMP.cloneNode(true);
+				newTR.style.display='';
+				var newDianTR=TR_DIAN.cloneNode(true);
+				newDianTR.style.display='';
+				var str = '';
+				var orgzName = '<font color="blue"><b>' + list[i].callorgz + '</b></font>';
+				var toorgzName = '<font color="blue"><b>' + list[i].toorgz + '</b></font>';
+				var node =  list[i].node;
+				if(node == null)
+					node ='';
+				if(node.length>10) node = node.substr(0,9)+'...';
+				if(list[i].state=='001'){
+					str = '事件已由'+orgzName+'接收';
+				}
+				else if(list[i].state=='002'){
+					str = '事件已由'+orgzName+'转发到' + toorgzName+',内容为：'+node;
+				}
+				else if(list[i].state=='003'){
+					str = '事件由'+toorgzName+'正在办理';
+				}else if(list[i].state=='005'){
+					str = '事件已由'+toorgzName+'办理完毕';
+				}else if(list[i].state=='006'){
+					str = '事件<font color="red">逾期</font>未办理';
+				}
+				if(newTR.childNodes.length==2)
+				{
+					newTR.childNodes[1].innerHTML='<a onclick="showEvent(\''+list[i].code+'\')"><font size="4px" color="green">'+list[i].calltitle+str+'</font></a>';
+				}
+				else
+				{
+					newTR.childNodes[3].innerHTML='<a onclick="showEvent(\''+list[i].code+'\')"><font size="4px" color="green">'+list[i].calltitle+str+'</font></a>';
+				}
+
+				TR_TMP.parentNode.insertBefore(newTR,TR_TMP);
+			}
+		},
+		async:false
+   });
+   var speed=50
+   demo2.innerHTML=demo1.innerHTML
+   function Marquee(){
+   if(demo2.offsetTop-demo.scrollTop<=0)
+   demo.scrollTop-=demo1.offsetHeight
+   else{
+   demo.scrollTop++
+   }
+   }
+   var MyMar=setInterval(Marquee,speed)
+   demo.onmouseover=function() {clearInterval(MyMar)}
+   demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+   
+   function showEvent(code){
+	   parent.parent.openTab('CALL100','事件查看','VIEW&eventcode='+code);
+   }
+  
+ 	
+   </script>
+</html>

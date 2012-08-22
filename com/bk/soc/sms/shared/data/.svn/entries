@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/sms/shared/data"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="126"
+   kind="dir"
+   committed-date="2012-08-20T00:33:52.390625Z"/>
+<entry
+   name="TBadOutBox.java"
+   checksum="45270ce20a9cc1b73b56b0ccf60cc121"
+   last-author="ds"
+   committed-rev="126"
+   text-time="2012-08-20T00:33:52.390000Z"
+   kind="file"
+   committed-date="2012-08-20T00:33:52.390625Z"/>
+<entry
+   name="THistoryMsg.java"
+   checksum="cea37032abc1cf54821a056c450c98c4"
+   last-author="sxr"
+   committed-rev="121"
+   text-time="2012-08-16T09:34:09.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:09.993625Z"/>
+<entry
+   name="TInBox.java"
+   checksum="3eb9ddf22a5038685168bf444b5a61c6"
+   last-author="ds"
+   committed-rev="126"
+   text-time="2012-08-20T00:33:52.390000Z"
+   kind="file"
+   committed-date="2012-08-20T00:33:52.390625Z"/>
+<entry
+   name="TOutBox.java"
+   checksum="f040fdc523851644b3ccdd0fae10e37e"
+   last-author="ds"
+   committed-rev="126"
+   text-time="2012-08-20T00:33:52.390000Z"
+   kind="file"
+   committed-date="2012-08-20T00:33:52.390625Z"/>
+<entry
+   name="TSendedOutBox.java"
+   checksum="8ed41306ec58e282fbd58e16f45ff64a"
+   last-author="ds"
+   committed-rev="126"
+   text-time="2012-08-20T00:33:52.390000Z"
+   kind="file"
+   committed-date="2012-08-20T00:33:52.390625Z"/>
+<entry
+   name="VBadMsgInfo.java"
+   checksum="a4157d29afe850efb00422c72cfa7645"
+   last-author="sxr"
+   committed-rev="121"
+   text-time="2012-08-16T09:34:09.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:09.993625Z"/>
+<entry
+   name="VInMsgInfo.java"
+   checksum="49118bc2e8ff09eb8400eb3a1976895b"
+   last-author="sxr"
+   committed-rev="121"
+   text-time="2012-08-16T09:34:09.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:09.993625Z"/>
+<entry
+   name="VOutMsgInfo.java"
+   checksum="baa821e49f9c35586da72cc90c23bc80"
+   last-author="sxr"
+   committed-rev="121"
+   text-time="2012-08-16T09:34:09.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:09.993625Z"/>
+<entry
+   name="VPerson.java"
+   checksum="19dfd8003527417f1733b5932e46c429"
+   last-author="sxr"
+   committed-rev="121"
+   text-time="2012-08-16T09:34:09.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:09.993625Z"/>
+<entry
+   name="VSendedMsgInfo.java"
+   checksum="eda93c892ced34aa1510b9f9a6daadae"
+   last-author="sxr"
+   committed-rev="121"
+   text-time="2012-08-16T09:34:09.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:09.993625Z"/>
+<entry
+   name="VStatistic.java"
+   checksum="804488598e01569b822fd94f0f2687fe"
+   last-author="sxr"
+   committed-rev="121"
+   text-time="2012-08-16T09:34:09.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:09.993625Z"/>
+</wc-entries>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>enterAddNew</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteModule</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出</Text>
+					<Method>opExportSQL</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailBeanArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewModule</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>修改</Text>
+					<Method>opModifyModule</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="moduleId" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="itemArea" type="ListAreaUnit">
+		<Case value="ADDNEW">
+			<Hide>true</Hide>
+		</Case>
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>enterAddNew</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteTables</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="detailTableArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewTable</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>修改</Text>
+					<Method>opModifyTable</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="tableName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="fieldArea" type="ListAreaUnit">
+		<Case value="ADDNEW">
+			<Hide>true</Hide>
+		</Case>
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>新增字段</Text>
+					<Method>showAddNewField</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>自动获取数据字典</Text>
+					<Method>opGetFieldInfo</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>修改全部</Text>
+					<Method>opModifyAllFields</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除字段</Text>
+					<Method>opDeleteFields</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newFieldArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewField</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

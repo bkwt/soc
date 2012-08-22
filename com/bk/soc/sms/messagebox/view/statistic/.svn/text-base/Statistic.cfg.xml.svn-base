@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="VIEW">
+			<Edit>false</Edit>
+			<Operaters>				
+			</Operaters>
+		</Case>
+	</Area>	
+</AppConfig>

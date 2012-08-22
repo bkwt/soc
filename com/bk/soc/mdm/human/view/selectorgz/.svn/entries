@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/mdm/human/view/selectorgz"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="14"
+   kind="dir"
+   committed-date="2012-08-08T08:57:26.015625Z"/>
+<entry
+   name="selectOrgz.js"
+   checksum="7b5f60c011732de60d4fc10ea916384e"
+   last-author="ds"
+   committed-rev="14"
+   text-time="2012-08-08T08:57:26.015000Z"
+   kind="file"
+   committed-date="2012-08-08T08:57:26.015625Z"/>
+</wc-entries>

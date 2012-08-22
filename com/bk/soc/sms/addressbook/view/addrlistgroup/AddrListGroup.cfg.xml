@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="PUBLIC">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showAddNewWin</Method>
+					<ConstParam>PUBLICNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyAddrListGroup</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>deleteAddrListGroup</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="PRIVATE">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showAddNewWin</Method>
+					<ConstParam>PRIVATENEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyAddrListGroup</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>deleteAddrListGroup</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>	
+	<Area id="newAddrListGroupArea" type="DetailAreaUnit">
+		<Case value="PUBLICNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNew</Method>
+					<ConstParam>PUBLIC</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNew</Method>
+					<ConstParam>PUBLIC*CLOSE</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam>PUBLIC*CLOSE</ConstParam>
+				</Operater>
+			</Operaters>
+			 <Fields>
+			 	<Field name="groupCode" xtype="textfield">
+					<Enabled>false</Enabled><!--是否可编辑 -->
+					<Default>"自动生成"</Default><!--默认值 -->
+				</Field>
+			</Fields>
+		</Case>
+		<Case value="PRIVATENEW">
+		<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNew</Method>
+					<ConstParam>PRIVATE</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNew</Method>
+					<ConstParam>PRIVATE*CLOSE</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam>PRIVATE*CLOSE</ConstParam>
+				</Operater>
+			</Operaters>
+			 <Fields>
+			 <Field name="groupCode" xtype="textfield">
+					<Enabled>false</Enabled><!--是否可编辑 -->
+					<Default>"自动生成"</Default><!--默认值 -->
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

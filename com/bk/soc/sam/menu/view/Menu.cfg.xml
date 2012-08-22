@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<!--  <Icon>/SOC/org/fdm/images/button/add.gif</Icon>-->
+					<Method>showNewMenuWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyMenus</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteMenus</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出</Text>
+					<Method>opExportMenuData</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="newMenuArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewMenu</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="menuCode" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default>"自动生成"</Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

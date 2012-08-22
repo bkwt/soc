@@ -1,0 +1,242 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src='/SOC/dwr/engine.js'> </script>
+<script src='/SOC/dwr/interface/SAM_LoginService.js'> </script>
+<script src="/SOC/dwr/interface/SAM_HistoryService.js"></script>
+<style type="text/css">
+<!--
+td {
+		font-family: "宋体";
+		font-size: 12px;
+		line-height: 15px;
+		color: #000000;
+		text-decoration: none
+}
+
+.input {
+		ServiceRDER-ServiceTTOM: black 1px solid;
+		ServiceRDER-LEFT: black 1px solid;
+		ServiceRDER-RIGHT: black 1px solid;
+		ServiceRDER-TOP: black 1px solid;
+		FONT-SIZE: 12px
+}
+
+.select {
+		font-family: "宋体";
+		font-size: 12px;
+		line-height: 20px;
+		text-decoration: none;
+		background-color: #eeeeee;
+		width: 190px
+}
+
+.select_year {
+		font-family: "宋体";
+		font-size: 12px;
+		line-height: 20px;
+		text-decoration: none;
+		background-color: #eeeeee;
+		width: 60px
+}
+-->
+</style>
+
+</head>
+
+<table border="0" cellpadding="0" cellspacing="0" width="900"
+	height="600" align="center">
+	<tr>
+		<td style="background:url(/SOC/org/fdm/images/login/login_bg_tl.jpg) no-repeat">
+
+		<table width="100%" height="100%">
+			<tr height="330">
+				<td align="right">
+				<table border="0" width="100%">
+					<tr height=90>
+						<td>
+						<td>
+					</tr>
+					<tr>
+						<td width="43"></td>
+						<td><object
+							classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+							codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+							width="727" height="157">
+							<param name="movie" value="/SOC/org/fdm/flash/login.swf" />
+							<param name="quality" value="high" />
+							<embed src="/SOC/org/fdm/flash/login.swf" quality="high"
+								pluginspage="http://www.macromedia.com/go/getflashplayer"
+								type="application/x-shockwave-flash" width="727" height="157"></embed>
+						</object></td>
+					</tr>
+					<tr height="303" valign="top">
+						<td width="43"></td>
+						<td>
+						<table>
+							<tr height="75">
+								<td width="350"></td>
+								<td valign="bottom"><font color="#0E81C7">公司名称</font>&nbsp;
+								<select
+									name="company_code" class="select" 　text-align=left;>
+									<option id="comp" value="11">哈工大慧通新意信息技术有限公司</option>
+								</select>
+								<font color="#0E81C7">年度</font>
+								<select	name="year" class="select_year" size="1">
+									
+								</select>
+								</td>
+							</tr>
+							<tr height="30">
+								<td width="370"></td>
+								<td valign="bottom"><font color="#0E81C7">用户代码</font>&nbsp;&nbsp;<input
+									id="user" bordercolor="#B1B0AE" size=12 maxlength="20" value=""
+									class="input" style="border-style: groove; border-width: 1px">
+								<font color="#0E81C7">密码&nbsp;</font><input id="pwd" size=10
+									type="password" value="" maxlength="20" class="input" value=""
+									onkeydown="checkLogin();"></td>
+							</tr>
+							<tr height="40">
+								<td width="370"></td>
+								<td valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<font color=#000066> <a href="#"
+									onclick="login();"><img border="0"
+									src=" /SOC/org/fdm/images/login/login.jpg" width="80"
+									height="26"></a> &nbsp;&nbsp;<a href="#" onclick="reset();"><img
+									border="0" src=" /SOC/org/fdm/images/login/reset.jpg"
+									width="80" height="26"></a> </font></td>
+							</tr>
+						</table>
+						<td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+</table>
+<center>
+<table width="800">
+	<tr>
+		<td width="40%"></td>
+		<td><a href="/SOC/tools/chrome.exe">谷歌浏览器</a></td>
+		<td><a href="/SOC/tools/chrome_flash.exe">谷歌浏览器FLASH插件</a></td>
+		<td><a href="/SOC/tools/SVGViewcn.exe">IE SVG插件</a></td>
+		<td><a href="/SOC/tools/pandion.exe">IM即时消息客户端</a></td>
+	</tr>
+</table>
+</center>
+<script language="javascript">
+document.all.user.focus();
+
+var wh=null;
+
+function openMainFrame()
+{	
+	//var m_height = parseInt(window.screen.availHeight-10);
+	//var m_width = window.screen.availWidth;
+	
+	var m_height = 768;
+	var m_width = 1024;
+	
+	wh = window.open('/SOC/org/fdm/main/mainPage.html', 'mainFrame1','location=no,scrollbars=no,menubar=no,status=yes,resizable=1,width='+m_width+',height='+m_height+',left=0,top=0');
+	
+	if(!wh)
+	{
+		setTimeout('openMainFrame()',500);
+	}
+	else
+	{
+		wh.focus();
+		window.opener=null;
+		window.close();
+	}
+}
+
+function login()
+{
+	if(!yearField.value)
+	{
+		alert('请选择历史年度.');
+		return;
+	}
+	
+	var logId=document.all.user.value;
+	var passWord=document.all.pwd.value;
+	
+	if(logId.length==0)
+	{
+		alert('请填写用户名');
+		return;
+	}
+	
+	SAM_LoginService.historyLogin(logId,passWord,yearField.value,
+	{
+		callback:function(viewData)
+		{
+			if(viewData.isSucceed)
+			{
+				openMainFrame();
+			}
+			else
+			{
+				alert(viewData.message);
+			}
+		}
+		,
+		async:false
+	});
+}
+
+function checkLogin()
+{
+	if(event.keyCode==13)
+	{
+		login();
+	}
+}
+
+function reset()
+{
+	document.all.user.value="";
+	document.all.pwd.value="";
+}
+
+SAM_LoginService.getCompanyName({
+	callback:function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			alert(viewData.message);
+		}
+		else
+		{
+			if(viewData.resultList.length>0)
+			{
+				document.getElementById('comp').innerHTML=viewData.resultList[0];
+			}
+		}
+	}
+	,
+	async:false
+});
+
+var yearField=document.getElementById('year');
+
+SAM_HistoryService.getHistoryYears(function(list)
+{
+	for(var i=0;i<list.length;++i)
+	{
+		var option=document.createElement('option');
+		option.setAttribute('value',list[i].year);
+		option.appendChild(document.createTextNode(list[i].year));
+		yearField.appendChild(option);
+	}
+});
+
+
+
+
+</script>

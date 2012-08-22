@@ -1,0 +1,20 @@
+.messagefont{
+    font-size: 12px;
+    color:red;
+}
+
+.welcomefont{
+    font-size: 18px;
+}
+
+.clockfont{
+    font-size: 32px;
+    text-align:center;
+}
+
+.button{cursor:hand;color: #2E448F;font-size: 18px;}
+
+.portlet-content {
+    padding: 10px;
+    font-size: 11px;
+}

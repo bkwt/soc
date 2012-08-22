@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	1.系统管理-系统定义 
+-->
+<Component sys="SAM" id="com.bk.soc.sam.role" name="角色管理" ver="1.00">
+	<Function id="SAM0003" name="角色管理">
+		<property name="url"  value="/view/Role.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="SAM0003_1" name="角色管理">
+		<property name="url"  value="/view/Role.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="SelectRole" name="选择角色" isSelectPage="true">
+		<property name="url"  value="/view/select/selectRole.js" />
+	</Function>
+</Component>

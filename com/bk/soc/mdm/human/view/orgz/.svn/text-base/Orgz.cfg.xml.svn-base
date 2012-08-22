@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="TreeAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>openAddWindow</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>				
+				<Operater>
+					<Text>保存</Text>
+					<Method>opUpdate</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDelete</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters><!--
+			<Controller>
+	            <Function>controlCH</Function>
+            </Controller>
+		--></Case>		
+		<Case value="VIEW">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			<Title>部门查询</Title>
+			<Operaters>				
+			</Operaters>
+		</Case>
+	</Area>	
+	
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opInsert</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opInsertAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+		</Case>
+	</Area>		
+	
+</AppConfig>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/WebContent/org/fdm/images/login/images"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="2"
+   kind="dir"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="login.png"
+   checksum="6d3526b484f1bb850d4984060f3d09e2"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.230000Z"/>
+<entry
+   name="login_r1_c1.png"
+   checksum="6d3526b484f1bb850d4984060f3d09e2"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:13.891000Z"/>
+<entry
+   name="login_r1_c2.png"
+   checksum="4ff71ff03418c186cc8c54f0166854eb"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.065000Z"/>
+<entry
+   name="login_r2_c1.png"
+   checksum="d49a09e50f0ae85ce247d1e2ba0d8d50"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.115000Z"/>
+<entry
+   name="main_r1_c1.png"
+   checksum="82fc6c05dbc17715a48d5b5fe30b1204"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.292000Z"/>
+<entry
+   name="main_r1_c2.png"
+   checksum="964e11284fa7a62ab1b784ee4a10acfa"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.388000Z"/>
+<entry
+   name="main_r2_c1.png"
+   checksum="2dabe6a45271fb9c97def70198038cfd"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.436000Z"/>
+<entry
+   name="main_r3_c2.png"
+   checksum="99683d8ad59e18294e88c35ee4e1506e"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:13.833000Z"/>
+<entry
+   name="main_r3_c3.png"
+   checksum="7bf639aa061d10a9046447710f044080"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:13.916000Z"/>
+<entry
+   name="main_r3_c4.png"
+   checksum="739e01ea924ef5115d00b5bd637ad41f"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.134000Z"/>
+<entry
+   name="main_r4_c3.png"
+   checksum="d6280b072d4a365c647b3ba37b277c0c"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.157000Z"/>
+<entry
+   name="movie1.swf"
+   checksum="51af98324fa5263e34606a145b78497b"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.501000Z"/>
+<entry
+   name="spacer.gif"
+   checksum="221d8352905f2c38b3cb2bd191d630b0"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:14.164000Z"/>
+</wc-entries>

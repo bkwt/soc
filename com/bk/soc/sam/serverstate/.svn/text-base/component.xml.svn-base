@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	
+-->
+<Component sys="SAM" id="com.bk.soc.sam.serverstate" name="服务器状态" ver="1.00">
+	<Function id="SAM0020" name="在线状态">
+		<property name="url"  value="/view/ServerState.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+</Component>

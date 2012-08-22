@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/call/kbm"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="122"
+   kind="dir"
+   committed-date="2012-08-16T09:34:57.993625Z"/>
+<entry
+   name="KbmBO.java"
+   checksum="b5962f4121b0c1443ecd64e59a2dee99"
+   last-author="ds"
+   committed-rev="122"
+   text-time="2012-08-16T09:34:57.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:57.993625Z"/>
+<entry
+   name="KbmService.java"
+   checksum="70514c8870206b8de626d9a2140f974d"
+   last-author="ds"
+   committed-rev="122"
+   text-time="2012-08-16T09:34:57.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:57.993625Z"/>
+<entry
+   name="component.xml"
+   checksum="27047d0da8a0ef38d8b83b7d328afa3a"
+   last-author="ds"
+   committed-rev="92"
+   text-time="2012-08-14T05:54:56.649000Z"
+   kind="file"
+   committed-date="2012-08-14T05:54:56.649875Z"/>
+<entry
+   name="data"
+   kind="dir"/>
+<entry
+   name="view"
+   kind="dir"/>
+</wc-entries>

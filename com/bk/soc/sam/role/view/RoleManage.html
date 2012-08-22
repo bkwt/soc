@@ -1,0 +1,1086 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/SOC/resources/css/ext-all.css" />
+ <style type="text/css"> .x-tree-node-icon { display:none; } </style> 
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type="text/javascript" src="/SOC/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="/SOC/ext-all.js"></script>
+
+
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_RoleService.js'></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/page/PageUnit.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/area/ListAreaUnit.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/area/DetailAreaUnit.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/window/WindowUnit.js"></script>
+</head>
+<script>
+//--------------------p1-----------------------------------
+var page1 = new PageUnit('page1');
+
+var mainArea=new ListAreaUnit('mainArea');
+mainArea.setCm([
+{
+	header: "角色编码",
+	dataIndex: 'roleCode',
+	width: 200,
+	sort:true,
+	editor: new Ext.form.TextField(
+	{
+		allowBlank: false
+	})
+},
+{
+	header: "角色名称",
+	dataIndex: 'roleName',
+	width: 250,
+	sort:true,
+	editor: new Ext.form.TextField(
+	{
+		allowBlank: false
+	})
+},
+{
+	header: "备注",
+	dataIndex: 'roleNote',
+	width: 250,
+	editor: new Ext.form.TextField(
+	{
+		allowBlank: true
+	})
+}]);
+
+//mainArea.setTitle('角色定义');
+
+var row1,row2,row3;
+
+row1=new Ext.Panel(rowConfig);
+						
+row1.add({tag: 'div', html: '角色编码：',bodyStyle:queryLabel+'width:100'});
+row1.add({xtype:'textfield',name:'roleCode',width:100});
+
+row1.add({tag: 'div', html: '角色名称：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',name:'roleName',width:100});
+
+row1.add({tag: 'div', html: '用户编码：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',name:'userID',width:100,rule:"roleCode in (select roleCode from TUserRole where logID in (select logID from VUser where userID like '%@VALUE@%'))"});
+
+row1.add({tag: 'div', html: '用户名称：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',name:'userName',width:100,rule:"roleCode in (select roleCode from TUserRole where logID in (select logID from VUser where userName like '%@VALUE@%'))"});
+
+mainArea.addToQueryPanel(row1);
+//-------------------------------------------------------
+var newRoleWin=new WindowUnit('newRoleWin');
+newRoleWin.setTitle('新增角色');
+
+var newRoleArea=new DetailAreaUnit('newRoleArea');
+newRoleArea.setTitle('');
+
+row1=new Ext.Panel(rowConfig);
+						
+row1.add({tag: 'div', html: '角色编码：',bodyStyle:queryLabel+'width:100'});
+row1.add({xtype:'textfield',name:'roleCode',width:120,allowBlank: false});
+			
+row1.add({tag: 'div', html: '角色名称：',bodyStyle:queryLabel+'width:100'});
+row1.add({xtype:'textfield',name:'roleName',width:120,allowBlank: false});
+			
+row1.add({tag: 'div', html: '备注：',bodyStyle:queryLabel+'width:100'});
+row1.add({xtype:'textfield',name:'roleNote',width:200});
+row1.add({xtype:'hidden',name:'hid'});
+
+newRoleArea.addToFieldSet(row1);
+//-------------------------------------------------------
+var page2 = new PageUnit('page2');
+
+var detailArea=new DetailAreaUnit('detailArea');
+detailArea.setTitle('分配菜单');
+
+row1=new Ext.Panel(rowConfig);
+						
+row1.add({tag: 'div', html: '角色编码：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',name:'roleCode',width:120});
+			
+row1.add({tag: 'div', html: '角色名称：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',name:'roleName',width:120});
+			
+row1.add({tag: 'div', html: '备注：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',id:'pppp',name:'roleNote',width:120});
+row1.add({xtype:'hidden',name:'hid'});
+
+detailArea.addToFieldSet(row1);
+detailArea.addToFieldSet({tag: 'div',bodyStyle:'border:0px'});
+detailArea.addToFieldSet({tag: 'div', html: '<b>从admin角色复制</b>:可以让当前角色的某一个菜单的授权配置完全从admin角色复制.',bodyStyle:'border:0px;font-size:12px;width:600'});
+detailArea.addToFieldSet({tag: 'div', html: '<b>移除授权</b>:使当前角色的某个菜单下的授权全部被清除.',bodyStyle:'border:0px;font-size:12px;width:600'});
+//-------------------------------------------------
+var selectFunctionArea=new SelectAreaUnit('selectFunctionArea');
+selectFunctionArea.setCm([
+{
+	header: "菜单名称",
+	dataIndex: 'functionName',
+	width: 150,
+	editor: null
+},
+{
+	header: "构件名称",
+	dataIndex: 'componentName',
+	width: 120,
+	editor: null
+},
+{
+	header: "说明",
+	dataIndex: 'note',
+	width: 100,
+	editor: null
+}]);
+
+selectFunctionArea.setHeight(365);
+selectFunctionArea.setWidth(395);
+selectFunctionArea.setPageSize(14);
+
+selectFunctionArea.addToQueryPanel([
+{xtype:'textfield',name:'componentId',fieldLabel:'构件ID',rowspan:2,rule:'@NAME@ LIKE \'%@VALUE@%\''},
+{xtype:'textfield',name:'componentName',fieldLabel:'构件名称',owner:'_t2'},
+{xtype:'textfield',name:'functionName',fieldLabel:'菜单名称'}
+],
+{
+	labelRate:0.5,
+	fieldsPerRow:2
+});
+//-------------------------------------------------
+var buttomPanel=new Ext.Panel(
+{
+	height:10,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+	bodyStyle: panelBodyStyle,
+	layout:'table',
+	autoHeight:true
+});
+
+//-------------------------------------------------------
+var menuTree=new Ext.tree.TreePanel({
+	width:395,
+	height:470,
+	autoScroll:true,
+	enableDD:true,
+	animate : false,
+	tbar:[
+	'-',
+	{
+		text:'从admin角色复制',
+		handler : function()
+		{
+			var node=menuTree.getSelectionModel().getSelectedNode();
+			
+			if(node&&node.isCompleted)
+			{
+				SAM_RoleService.opCopyFromAdmin(node.id,getAppContext('roleCode'),function(viewData)
+				{
+					if(!viewData.isSucceed)
+					{
+						Ext.alert('复制失败.'+viewData.message);
+					}
+					else
+					{
+						var n=node.childNodes.length;
+	
+						for(var i=0;i<n;++i)
+						{
+							node.childNodes[0].remove();
+						}
+						
+						node.collapse(false);
+						node.isCompleted=false;
+					    node.expand(false);
+					    selectFunctionArea.clean();
+					}
+				});
+			}
+			else
+			{
+				Ext.alert('请选中一个您想要从admin角色复制的菜单.');
+			}
+		}
+	},
+	'-',
+	{
+		text:'移除授权',
+		handler : function()
+		{
+			var list = getAllNodes();
+			if(list.length == 0){
+				Ext.alert('请勾选菜单');
+				return;
+			}
+			
+			Ext.confirm('您将移除'+list.length+'个菜单,确定吗?',function(btn)
+				{
+					if(btn=='yes')
+					{
+						SAM_RoleService.opRemoveSelectedFunctions(list,getAppContext('roleCode'),function(viewData)
+						{
+							if(!viewData.isSucceed)
+							{
+								Ext.alert('移除失败.'+viewData.message);
+							}
+							else
+							{
+								var parentNode = [];
+								for(var i=0;i<list.length;++i)
+								{
+									var node=menuTree.getNodeById(list[i]);
+									parentNode.push(node.parentNode);
+									if(node)
+										node.remove();
+								}
+								for(var i=0;i<parentNode.length;++i)
+								{
+									if(!parentNode[i].hasChildNodes())
+										parentNode[i].setText(parentNode[i].text.replace('#000000','red'));
+								}
+								var node=menuTree.getSelectionModel().getSelectedNode();
+	
+								if(!node)
+								{
+									return;
+								}
+								
+								if(node.leaf)
+								{
+									return;
+								}
+								selectFunctionArea.queryFields['componentId'].setValue(node.id.substring(0,3));
+						    	selectFunctionArea.queryFields['componentName'].setValue(node.name.substring(0,2));
+						    	
+						    	var selecteds=[];
+						    	
+						    	for(var i=0;i<node.childNodes.length;++i)
+						    	{
+						    		selecteds.push(node.childNodes[i].id);
+						    	}
+						    	selectFunctionArea.cleanSelected();
+						    	selectFunctionArea.setSelected(selecteds,'functionId');
+						    	selectFunctionArea.queryFunctions();
+							}
+						});
+					}
+				});
+			/*	
+			var node=menuTree.getSelectionModel().getSelectedNode();
+			
+			if(node&&node.isCompleted)
+			{
+				Ext.confirm('您将移除'+(node.name?node.name:'根菜单')+'下的所有菜单,确定吗?',function(btn)
+				{
+					if(btn=='yes')
+					{
+						SAM_RoleService.opRemoveFunctions(node.id,getAppContext('roleCode'),function(viewData)
+						{
+							if(!viewData.isSucceed)
+							{
+								Ext.alert('移除失败.'+viewData.message);
+							}
+							else
+							{
+								var n=node.childNodes.length;
+	
+								for(var i=0;i<n;++i)
+								{
+									node.childNodes[0].remove();
+								}
+								
+							    node.collapse(false);
+								node.isCompleted=false;
+							    node.expand(false);
+							    selectFunctionArea.clean();
+							}
+						});
+					}
+				});
+			}else if(node&&!node.isCompleted)
+			{
+				Ext.confirm('您将移除'+node.name+'这个菜单,确定吗?',function(btn)
+				{
+					if(btn=='yes')
+					{
+						SAM_RoleService.opRemoveFunctions(node.id,getAppContext('roleCode'),function(viewData)
+						{
+							if(!viewData.isSucceed)
+							{
+								Ext.alert('移除失败.'+viewData.message);
+							}
+							else
+							{
+								selectFunctionArea.queryFields['componentId'].setValue(node.parentNode.id.substring(0,3));
+						    	selectFunctionArea.queryFields['componentName'].setValue(node.parentNode.name.substring(0,2));
+						    	
+						    	var selecteds=[];
+						    	
+						    	for(var i=0;i<node.parentNode.childNodes.length;++i)
+						    	{
+						    		if(node.parentNode.childNodes[i] != node)
+						    		selecteds.push(node.parentNode.childNodes[i].id);
+						    	}
+						    	selectFunctionArea.cleanSelected();
+						    	selectFunctionArea.setSelected(selecteds,'functionId');
+						    	selectFunctionArea.queryFunctions();
+								node.remove();
+							}
+						});
+					}
+				});
+			}
+			else
+			{
+				Ext.alert('请选中一个菜单.');
+			}
+			*/
+		}
+	},
+	'-',
+	{
+		text:'保存菜单顺序',
+		handler : function()
+		{
+			//var node=menuTree.getSelectionModel().getSelectedNode();
+			
+			//if(node&&node.isCompleted)
+			//{
+				getNodeIndex(menuRoot);
+				
+			//}
+			//else
+			//{
+			//	Ext.alert('请选中一个菜单.');
+			//}
+		}
+	},
+	'-',{
+		text:'刷新',
+		handler : function()
+		{
+			SAM_RoleService.opDeleteUseless(getAppContext('roleCode'),function(viewData)
+			{
+				
+			});
+		}
+	},
+	'-']
+});
+
+var menuRoot = new Ext.tree.TreeNode({
+    text: '菜单根',
+    draggable:false,
+    id:'root',
+    checked:false
+});
+    
+menuTree.setRootNode(menuRoot);
+
+menuTree.on('checkchange',function(node, checked) {
+			
+            var parentNode = node.parentNode; 
+
+            if(parentNode !== null) {   
+                        parentCheck(parentNode,checked);   
+                   } 
+
+          node.expand();  
+
+           node.attributes.checked = checked;     
+
+           node.eachChild(function(child) 
+                 {     
+				
+                  child.ui.toggleCheck(checked);    
+                         child.attributes.checked = checked;     
+                         child.fireEvent('checkchange', child, checked); 
+                        
+
+           });     
+
+    }, menuTree);
+//-------------------------------------------------------
+menuRoot.on('beforeexpand',function(_this,_deep,_anim)
+{
+	if(_this.childNodes.length==0)
+	{
+		queryMenus(getAppContext('roleCode'),_this.id);
+	}
+	return true;
+});
+
+var changeList=[];
+//-----------------------查询所有用户界面--------------------------------
+
+var page3 = new PageUnit('page3');
+
+var detailAllUserArea=new DetailAreaUnit('detailAllUserArea');
+
+row1=new Ext.Panel(rowConfig);
+						
+row1.add({tag: 'div', html: '角色编码：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',name:'roleCode',width:120});
+			
+row1.add({tag: 'div', html: '角色名称：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',name:'roleName',width:120});
+			
+row1.add({tag: 'div', html: '备注：',bodyStyle:queryLabel+'width:80'});
+row1.add({xtype:'textfield',id:'pppp',name:'roleNote',width:120});
+row1.add({xtype:'hidden',name:'hid'});
+
+detailAllUserArea.addToFieldSet(row1);
+
+var listArea=new ListAreaUnit('listArea');
+listArea.setCm([
+{
+	header: "登陆ID",
+	dataIndex: 'logID',
+	width: 100,
+	sort:true,
+	editor: null
+},
+{
+	header: "用户编码",
+	dataIndex: 'userID',
+	width: 100,
+	sort:true,
+	editor:null
+},
+{
+	header: "用户名称",
+	dataIndex: 'userName',
+	width: 150,
+	editor:null
+},
+{
+	header: "所属组织",
+	dataIndex: 'orgzName',
+	width: 180,
+	editor:null
+},
+{
+	header: "所属岗位",
+	dataIndex: 'posName',
+	width: 220,
+	editor: null
+}]);
+
+row1=new Ext.Panel(rowConfig);
+						
+row1.add({tag: 'div', html: '登陆ID：',bodyStyle:queryLabel+'width:120'});
+row1.add({xtype:'textfield',name:'logID',width:120});
+
+row1.add({tag: 'div', html: '用户编码：',bodyStyle:queryLabel+'width:120'});
+row1.add({xtype:'textfield',name:'userID',width:120});
+
+row1.add({tag: 'div', html: '用户名称：',bodyStyle:queryLabel+'width:120'});
+row1.add({xtype:'textfield',name:'userName',width:120});
+
+listArea.addToQueryPanel(row1);
+//-------------------------------------------------------
+function appInit()
+{
+	page1.init();
+	
+	page1.add(mainArea);
+	mainArea.refreshFor(mainArea.queryRoles);
+	//---------------------------------------------
+	newRoleWin.init();
+	newRoleWin.add(newRoleArea);
+	//---------------------------------------------
+	page2.init();
+	page2.add(detailArea);
+	
+	//---------------------------------------------
+	page3.init();
+	page3.add(detailAllUserArea);
+	page3.add(listArea);
+	listArea.refreshFor();
+	
+	
+	selectFunctionArea.init();
+	
+	buttomPanel.add(menuTree);
+	buttomPanel.add(selectFunctionArea.getEm());
+	buttomPanel.on('beforehide',function(){return false;});
+	page2.addItem(buttomPanel);
+	
+	selectFunctionArea.getButtonBar().items.get(1).setText('确定');
+	selectFunctionArea.getButtonBar().items.get(4).hide();
+	selectFunctionArea.getButtonBar().items.get(5).hide();
+	
+	selectFunctionArea.refreshFor(selectFunctionArea.queryFunctions);
+	selectFunctionArea.setSelectEvent(null);
+	selectFunctionArea.setCallBack(setFunciton);
+	selectFunctionArea.setSelectMode('COMPLEX');
+	selectFunctionArea.loadAreaConfig();
+	//---------------------------------------------
+	var roleCode=request.getParameter('roleCode');
+	
+	if(roleCode)
+	{
+		setAppContext('roleCode',roleCode);
+		page2.show('SET');
+		detailArea.queryRole();
+		menuRoot.expand();
+	}
+	else
+	{
+		page1.show(request.getParameter('progParams'));
+		mainArea.queryRoles();
+	}
+	
+	hideLoading();
+}
+//--------------------------------------------------------
+function queryMenus(roleCode,id)
+{
+	SAM_RoleService.queryMenuAndFunctions(roleCode,id,
+	{
+		callback:function(viewData)
+		{
+			if(!viewData.isSucceed) return;
+			
+			var list=viewData.resultList;
+			
+			var parentNode=menuTree.getNodeById(id);
+			
+			for(var i=0;i<list.length;++i)
+			{
+				if(list[i].isFunction)
+				{
+					var newNode=parentNode.appendChild(new Ext.tree.TreeNode(
+					{
+						id:list[i].id,
+						text: list[i].name,
+						expandable:false,
+						draggable:true,
+						checked:false
+				    }));
+				    
+				    newNode.name=list[i].name;
+				    newNode.leaf=true;
+				}
+				else
+				{
+					var newNode=parentNode.appendChild(new Ext.tree.TreeNode(
+					{
+						id:list[i].id,
+						text:'<font'+(list[i].hasPower?' color="#000000"':' color="red"')+'>'+list[i].name+'</font>',
+						expandable:true,
+						checked:false
+				    }));
+				    
+				    newNode.name=list[i].name;
+				    newNode.isCompleted=false;
+				    
+				    newNode.on('beforeexpand',function(_this,_deep,_anim)
+				    {
+				    	if(_this.childNodes.length===0&&_this.isCompleted===false)
+				    	{
+				    		queryMenus(getAppContext('roleCode'),_this.id);
+				    	}
+				    	return true;
+				    });
+				    
+				    newNode.on('click',function(_this,_e)
+				    {
+				    	_this.expand(false);
+				    	selectFunctionArea.queryFields['componentId'].setValue(_this.id.substring(0,3));
+				    	selectFunctionArea.queryFields['componentName'].setValue(_this.name.substring(0,2));
+				    	
+				    	var selecteds=[];
+				    	
+				    	for(var i=0;i<_this.childNodes.length;++i)
+				    	{
+				    		selecteds.push(_this.childNodes[i].id);
+				    	}
+				    	selectFunctionArea.cleanSelected();
+				    	selectFunctionArea.setSelected(selecteds,'functionId');
+				    	selectFunctionArea.queryFunctions();
+				    });
+			    }
+			}
+			
+			parentNode.isCompleted=true;
+		}
+		,
+		async:false
+		}
+	);
+}
+//--------------------------------------------------------
+mainArea.queryRoles=function()
+{
+	SAM_RoleService.queryRoles(mainArea.getAreaInfo(),function(viewData)
+	{
+		mainArea.showViewData(viewData);
+	});
+}
+
+mainArea.opModifyRoles=function()
+{
+	var list=mainArea.getSelected();
+	
+	if(list.length==0)
+	{
+		Ext.alert('请勾选记录');
+		return;
+	}
+	
+	SAM_RoleService.opModifyRoles(list,function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			Ext.alert('修改失败');
+		}
+		else
+		{
+			mainArea.queryRoles();
+		}
+	});
+}
+
+mainArea.opDeleteRoles=function()
+{
+	var list=mainArea.getSelected();
+	
+	if(list.length==0)
+	{
+		Ext.alert('请勾选记录');
+		return;
+	}
+	
+	Ext.confirm('确认删除吗?',function(btn)
+	{
+		if(btn=='yes')
+		{
+			SAM_RoleService.opDeleteRoles(list,function(viewData)
+			{
+				if(!viewData.isSucceed)
+				{
+					Ext.alert('删除失败');
+				}
+				else
+				{
+					
+					mainArea.queryRoles();
+				}
+			});
+		}
+	});
+}
+
+mainArea.showNewRoleWin=function(constParam)
+{
+	newRoleWin.show(constParam);
+}
+
+newRoleArea.opAddNewRole=function()
+{
+	if(!newRoleArea.checkFields()) return;
+	
+	var obj=newRoleArea.getValueObject();
+	
+	SAM_RoleService.opAddNewRole(obj,function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			Ext.alert('新增失败');
+		}
+		else
+		{
+			
+			newRoleArea.clean();
+			mainArea.queryRoles();
+		}
+	});
+}
+
+newRoleArea.opAddNewRoleAndClose=function()
+{
+	if(!newRoleArea.checkFields()) return;
+	
+	var obj=newRoleArea.getValueObject();
+	
+	SAM_RoleService.opAddNewRole(obj,function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			Ext.alert('新增失败');
+		}
+		else
+		{
+			
+			newRoleWin.close();
+			mainArea.queryRoles();
+		}
+	});
+}
+
+newRoleArea.close=function()
+{
+	newRoleWin.close();
+}
+
+detailArea.queryRole=function()
+{
+	SAM_RoleService.queryRole(getAppContext('roleCode'),function(viewData)
+	{
+		detailArea.showViewData(viewData);
+	});
+}
+
+detailAllUserArea.queryRole=function()
+{
+	SAM_RoleService.queryRole(getAppContext('roleCode'),function(viewData)
+	{
+		detailAllUserArea.showViewData(viewData);
+	});
+}
+
+listArea.queryAllUser=function()
+{
+	SAM_RoleService.queryAllUser(getAppContext('roleCode'),function(viewData)
+	{
+		listArea.showViewData(viewData);
+	});
+}
+//导出数据
+mainArea.opExportMenuData=function()
+{
+	SAM_RoleService.opExportMenuData(mainArea.getAreaInfo(),function(viewData)
+	{
+		Ext.alert('已导出');
+	});
+}
+//显示报表页面
+mainArea.openPrintView=function()
+{
+	var list=mainArea.getSelected();
+	var conditions = " and a.roleCode in ('";
+	
+	for(var i=0;i<list.length;i++)
+	{
+		conditions += list[i].roleCode + "','"; 
+	}
+	conditions += "')";
+	if(list.length == 0) conditions = ' and 1=1';
+	
+	var pp=window.open('/SOC/view?functionId=SAM0051&conditions='+conditions,'','location=no,scrollbars=no,menubar=no,resizable=yes,status=no,width=760,height=800,left=0,top=0');
+	pp.focus();
+}
+
+mainArea.enterDetail=function(constParam)
+{
+	var obj=mainArea.getSigned();
+	
+	if(!obj)
+	{
+		Ext.alert('请选中一行记录');
+		return;
+	}
+	
+	setAppContext('roleCode',obj.roleCode);
+	
+	page2.show(constParam);
+	
+	detailArea.queryRole();
+	
+	changeList=[];
+	
+	var n=menuRoot.childNodes.length;
+	
+	for(var i=0;i<n;++i)
+	{
+		menuRoot.childNodes[0].remove();
+	}
+	
+    menuRoot.expand();
+    selectFunctionArea.clean();
+}
+//查询角色下所有用户
+mainArea.enterAllUserDetail=function(constParam)
+{
+	var obj=mainArea.getSigned();
+	
+	if(!obj)
+	{
+		Ext.alert('请选中一行记录');
+		return;
+	}
+	
+	setAppContext('roleCode',obj.roleCode);
+	
+	page3.show(constParam);
+	detailAllUserArea.queryRole();
+	listArea.queryAllUser();
+}
+
+detailAllUserArea.backToMain=function()
+{
+	page1.show();
+}
+detailArea.backToMain=function()
+{
+	if(changeList.length===0)
+	{
+		page1.show();
+	}
+	else
+	{
+		Ext.confirm('角色授权未保存,您想保存后退出吗？',function(btn)
+		{
+			if(btn=='yes')
+			{
+				SAM_RoleService.opSaveRoleConfig(changeList,function(viewData)
+				{
+					if(!viewData.isSucceed)
+					{
+						Ext.alert('保存失败');
+					}
+					else
+					{
+						changeList=[];
+						page1.show();
+					}
+				});
+			}
+			else
+			{
+				page1.show();
+			}
+		});
+	}
+}
+
+detailArea.removeFunctionFromMenu=function()
+{
+	var node=menuTree.getSelectionModel().getSelectedNode();
+	
+	if(!node)
+	{
+		Ext.alert("请选中菜单树上的一个构件功能节点.");
+		return;
+	}
+	
+	if(!node.leaf)
+	{
+		Ext.alert("请选中菜单树上的一个构件功能节点.");
+		return;
+	}
+	
+	var foundIt=false;
+	
+	for(var i=0;i<changeList.length;++i)
+	{
+		if(node.id==changeList[i].functionId)
+		{
+			changeList[i].menuCode=null;
+			foundIt=true;
+			break;
+		}
+	}
+	if(!foundIt)
+	{
+		changeList.push({roleCode:getAppContext('roleCode'),functionId:node.id,menuCode:null});
+	}
+	
+	node.remove();
+}
+
+selectFunctionArea.queryFunctions=function()
+{
+	SAM_RoleService.findFunctions(selectFunctionArea.getAreaInfo(),function(viewData)
+	{
+		selectFunctionArea.showViewData(viewData);
+	});
+}
+
+function setFunciton(siteTag,addList,removeList)
+{
+	var selectedNode=menuTree.getSelectionModel().getSelectedNode();
+	
+	if(selectedNode)
+	{
+		if(selectedNode.leaf)
+		{
+			Ext.alert('请选中非叶节点.');
+		}
+		else
+		{
+			if(addList.length>0||removeList.length>0)
+			{
+				Ext.confirm('您确定对['+selectedNode.name+']下的菜单进行更改吗?',function(btn)
+				{
+					if(btn=='yes')
+					{
+						for(var i=0;i<addList.length;++i)
+						{
+							changeList.push({roleCode:getAppContext('roleCode'),functionId:addList[i].functionId,menuCode:selectedNode.id});
+							var node=selectedNode.appendChild(new Ext.tree.TreeNode(
+							{
+								id:addList[i].functionId,
+								text:addList[i].functionName,
+								expandable:false,
+								checked:false
+						    }));
+						    
+						    node.leaf=true;
+						}
+						
+						for(var i=0;i<removeList.length;++i)
+						{
+							changeList.push({roleCode:getAppContext('roleCode'),functionId:removeList[i].functionId,menuCode:null});
+							var node=menuTree.getNodeById(removeList[i].functionId);
+							if(node)
+							{
+								node.remove();
+							}
+						}
+						
+						SAM_RoleService.opSaveRoleConfig(changeList,function(viewData)
+						{
+							if(!viewData.isSucceed)
+							{
+								Ext.alert('保存失败');
+							}
+							else
+							{
+								changeList=[];
+								
+								var selecteds=[];
+				    	
+						    	for(var i=0;i<selectedNode.childNodes.length;++i)
+						    	{
+						    		selecteds.push(selectedNode.childNodes[i].id);
+						    	}
+						    	selectFunctionArea.cleanSelected();
+						    	selectFunctionArea.setSelected(selecteds,'functionId');
+						    	selectFunctionArea.queryFunctions();
+						    	
+						    	selectedNode.expand();
+						    	
+						    	if(selectedNode.hasChildNodes())
+										selectedNode.setText(selectedNode.text.replace('red','#000000'));
+								else
+										selectedNode.setText(selectedNode.text.replace('#000000','red'));
+								
+							}
+						});
+					}
+				});
+			}
+		}
+	}
+	else
+	{
+		Ext.alert('没有选择菜单树的节点.');
+	}
+}
+
+
+function getNodeIndex(node){
+	if(node.hasChildNodes()) 
+	{ 	
+		var indexList= [];
+		node.eachChild(function(child) 
+	    {    
+			if(child.isLeaf() == true){
+	        	indexList.push({roleCode:getAppContext('roleCode'),menuCode:child.parentNode.id,functionId:child.id,functionIndex:node.indexOf(child)});
+	        }else{
+	        	getNodeIndex(child);
+	        }
+		});
+		if(indexList.length>0){
+					SAM_RoleService.opUpdateMenuIndex(indexList,function(viewData)
+					{alert1(indexList);
+						if(!viewData.isSucceed)
+						{
+							Ext.alert('保存失败.'+viewData.message);
+						}else{
+							Ext.alert('保存成功.');
+						}
+					});
+				}
+	} 
+}
+
+Ext.onReady(appInit);
+//判断是否有子结点被选中 
+         var childHasChecked = function(node) 
+        { 
+              var childNodes = node.childNodes; 
+
+        if(childNodes || childNodes.length>0){ 
+
+        for(var i=0;i<childNodes.length;i++){ 
+
+            if(childNodes[i].getUI().checkbox.checked) 
+
+                return true; 
+
+            } 
+              } 
+             return false; 
+         } 
+
+    //级联选中父节点 
+          var parentCheck = function(node ,checked){ 
+
+        var checkbox = node.getUI().checkbox; 
+
+        if(typeof checkbox == 'undefined') 
+
+            return false; 
+
+        if(!(checked ^ checkbox.checked)) 
+
+            return false; 
+
+        if(!checked && childHasChecked(node)) 
+
+            return false; 
+
+        checkbox.checked = checked; 
+               node.attributes.checked = checked; 
+               node.getUI().checkbox.indeterminate = checked; //半选中状态 
+
+        node.getOwnerTree().fireEvent('check', node, checked); 
+
+        var parentNode = node.parentNode; 
+
+        if( parentNode !== null){ 
+
+            parentCheck(parentNode,checked); 
+
+        } 
+
+    } 
+	//获取新增复选框树的值 
+         function getAllNodes(){ 
+
+        var checkedNodes = menuTree.getChecked();//tree必须事先创建好.这里要标识识获取那个treepanel的 id 
+
+        var checkedIds = []; 
+
+        for(var i=0;i<checkedNodes.length;i++) 
+               { 
+
+                 if( checkedNodes[i].hasChildNodes() || !checkedNodes[i].isLeaf()) 
+                         { 
+                                //这里只是获取节点为子节点的id ，如果不需要可以删除。 
+                         } 
+                          else 
+                          { 
+                                checkedIds.push(checkedNodes[i].id); 
+                           }           
+
+        } 
+                        return checkedIds; 
+
+    }; 	
+</script>
+<body>
+
+</body>
+</html>

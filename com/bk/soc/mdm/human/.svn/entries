@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/mdm/human"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="122"
+   kind="dir"
+   committed-date="2012-08-16T09:34:57.993625Z"/>
+<entry
+   name="CallCodeBill.java"
+   checksum="74a35ee278c6bc75014ed87f77213cb6"
+   last-author="ds"
+   committed-rev="92"
+   text-time="2012-08-14T05:54:56.649000Z"
+   kind="file"
+   committed-date="2012-08-14T05:54:56.649875Z"/>
+<entry
+   name="HumanFrameworkBO.java"
+   checksum="6bb273cf05136520a82fbdce6ee41903"
+   last-author="ds"
+   committed-rev="97"
+   text-time="2012-08-15T02:21:17.118000Z"
+   kind="file"
+   committed-date="2012-08-15T02:21:17.118625Z"/>
+<entry
+   name="IHumanFrameworkService.java"
+   checksum="743d2f22406316232cb2883360a521b2"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="SelectOrgz.java"
+   checksum="3875b27a2c65e8190967bb6438e635d7"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="SelectPerson.java"
+   checksum="13962de13e026a9c7e980d9bd81d1e4d"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="SelectPos.java"
+   checksum="c141fe5552f6116706883a7e1bd51059"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="component.xml"
+   checksum="9f69d4877599e7a1016b4afedf7e9070"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="data"
+   kind="dir"/>
+<entry
+   name="view"
+   kind="dir"/>
+</wc-entries>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="PUBLIC">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showAddNewWin</Method>
+					<ConstParam>PUBLICNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyAddrList</Method>
+					<ConstParam></ConstParam>
+				</Operater>				
+				<Operater>
+					<Text>删除</Text>
+					<Method>deleteAddrList</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="PRIVATE">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showAddNewWin</Method>
+					<ConstParam>PRIVATENEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyAddrList</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>deleteAddrList</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>	
+	<Area id="newAddrListArea" type="DetailAreaUnit">
+		<Case value="PUBLICNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNew</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNew</Method>
+					<ConstParam>CLOSE</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="PRIVATENEW">
+		<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNew</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNew</Method>
+					<ConstParam>CLOSE</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

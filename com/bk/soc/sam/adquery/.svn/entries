@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="sxr"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/sam/adquery"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="12"
+   kind="dir"
+   committed-date="2012-08-08T08:11:49.203125Z"/>
+<entry
+   name="AdvancedQueryConfigBO.java"
+   checksum="9b82d46d02ae4618093256e7c1451a3c"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IAdvancedQueryConfigService.java"
+   checksum="1e170819d23fc8db265c9c28fbfa89fd"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="component.xml"
+   checksum="fdc9ddc132bd9847f6f2949a7d0eade3"
+   last-author="sxr"
+   committed-rev="12"
+   text-time="2012-08-08T08:11:49.203000Z"
+   kind="file"
+   committed-date="2012-08-08T08:11:49.203125Z"/>
+<entry
+   name="data"
+   kind="dir"/>
+<entry
+   name="view"
+   kind="dir"/>
+</wc-entries>

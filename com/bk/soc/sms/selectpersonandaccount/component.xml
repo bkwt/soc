@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	
+-->
+<Component sys="SMS" id="com.bk.soc.sms.selectpersonandaccount" name="选择人员" ver="1.00">
+	<Function id="SelectPersonAndAccount" name="选择人员" isSelectPage="true">
+		<property name="url"  value="/view/selectPersonAndAccount.js" />
+	</Function>
+</Component>

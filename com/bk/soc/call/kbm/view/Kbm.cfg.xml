@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="TreeAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+			     <DbClickOperater>
+					<Method>openUpdateWindow</Method>
+					<ConstParam>ADDNEWCONTEXTUPDATE</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>新增目录</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>openAddTreeWindow</Method>
+					<ConstParam>ADDNEWTREE</ConstParam>
+				</Operater>	
+				<Operater>
+					<Text>新增内容</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>openAddContextWindow</Method>
+					<ConstParam>ADDNEWCONTEXT</ConstParam>
+				</Operater>					
+				<Operater>
+					<Text>保存</Text>
+					<Icon>/SOC/org/fdm/images/button/update1.gif</Icon>
+					<Method>opUpdate</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Icon>/SOC/org/fdm/images/button/delete1.gif</Icon>
+					<Method>opDelete</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>	
+	</Area>
+	
+	
+	<Area id="detailAreaTree" type="DetailAreaUnit">
+		<Case value="ADDNEWTREE">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opTreeInsert</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opTreeInsertAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+		</Case>
+	</Area>
+		
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="ADDNEWCONTEXT">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opInsert</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			 	<Operater>
+					<Text>保存关闭</Text>
+					<Method>opInsertAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater> 
+			</Operaters>
+		</Case>
+		<Case value="ADDNEWCONTEXTUPDATE">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opUpdate</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>opClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

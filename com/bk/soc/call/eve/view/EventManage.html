@@ -1,0 +1,502 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="/SOC/resources/css/ext-all-debug.css" />
+<title>SOC v1.0</title>
+<script type="text/javascript" src="/SOC/ext-all.js"></script>
+<script type="text/javascript" src="/SOC/locale/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/ext-base.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/win.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/detail.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/view.js"></script>
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type='text/javascript' src='/SOC/org/fdm/core/trees.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_LoginService.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/sysInfoService.js'></script>
+
+</head>
+<script>
+
+
+
+var userSession = null;
+var tel = request.getParameters('tel');
+var logId = request.getParameters('user');
+var passWord = request.getParameters('password');
+sysInfoService.getCurrentUserSession(
+		{
+			callback:function(cus)
+			{
+				userSession=cus;
+				if(userSession == null)
+					login();
+			},
+			async:false
+		});
+function login()
+{
+	if(logId == null)
+	{
+		alert('请填写用户名');
+		return;
+	}
+	
+	SAM_LoginService.login(logId,passWord,
+	{
+		callback:function(viewData)
+		{
+			if(viewData.isSucceed)
+			{
+				
+			}
+			else
+			{
+				alert(viewData.message);
+			}
+		}
+		,
+		async:false
+	});
+	sysInfoService.getCurrentUserSession(
+			{
+				callback:function(cus)
+				{
+					userSession=cus;
+				},
+				async:false
+			});
+}
+
+
+
+
+
+
+
+
+
+	var fieldsRankingBuff;
+	require('call_eventmanageservice');
+	functionId = 'CALL011';
+	CALL011 = function(v) {
+		eval(v);
+	};
+	include('SelectOrgz');
+	loadAreaConfig();
+	//选择部门
+	function selectCate(e) {
+
+		var obj = detailConversion1.getValueObject();
+		var receiveOrgzCodes = obj.orgzCodeHid;
+
+		var receiveOrgzCodeArray = StrUtil.split(receiveOrgzCodes, ',');
+		
+		showSelectOrgz(e, 'COMPLEX', setCate, '', receiveOrgzCodeArray, 'code');
+
+	}
+	function setCate(siteTag, addList, removeList) {
+		for ( var i = 0; i < addList.length; ++i) {
+			siteTag.appendField('orgzDis', addList[i].name, ',');
+			siteTag.appendField('orgzCodeHid', addList[i].code, ',');
+		}
+
+		for ( var i = 0; i < removeList.length; ++i) {
+			siteTag.removeField('orgzDis', removeList[i].name, ',');
+			siteTag.removeField('orgzCodeHid', removeList[i].code, ',');
+		}
+	}
+	/**
+	 * 事件类型store
+	 */
+	var callTypeStore = new Ext.data.Store({
+		fields : [ 'code', 'name' ]
+	});
+	call_eventmanageservice.getTCallType(function(list) {
+		
+		callTypeStore.loadData(list);
+	});
+	/**
+	 * 投诉渠道store
+	 */
+	var callChannelStore = new Ext.data.Store({
+		fields : [ 'code', 'name' ]
+	});
+	call_eventmanageservice.getTChannel({
+		callback:function(list) {
+		callChannelStore.loadData(list);
+	},
+		async:false
+	});
+	/**
+	 * 事件状态store
+	 */
+	var callStateStore = new Ext.data.Store({
+		fields : [ 'code', 'name' ]
+	});
+	call_eventmanageservice.getTCallState(function(list) {
+	
+		callStateStore.loadData(list);
+	});
+	/**
+	 * 查找类别大类
+	 */
+	var callCategorylLargeStore = new Ext.data.Store({
+		fields : [ 'code', 'name' ]
+	})
+	call_eventmanageservice.geteCategorylLarge({
+		callback : function(list) {
+			
+			callCategorylLargeStore.loadData(list);
+		},
+		async : false
+	});
+	/**
+	 * 查询类别小类
+	 */
+	var callCategorylSmallStore = new Ext.data.Store({
+		fields : [ 'code', 'name','stintday' ]
+	})
+	
+
+	var view = new ViewUnit('view');
+
+	var detailArea = new DetailAreaUnit('detailArea');
+
+	detailArea
+			.addToFieldSet([
+					{
+						fieldLabel : '事件标题',
+						name : 'calltitle',
+						xtype : 'textfield',
+						allowBlank : false,
+						enableKeyEvents : true,
+						listeners : {
+							keypress : function(a, e) {
+								if (e.keyCode == 13) {
+									detailArea.fields['callname'].focus(false,
+											100);
+								}
+							}
+						}
+					},
+					{
+						fieldLabel : '呼叫时间',
+						name : 'calltime',
+						xtype : 'datefield',
+						editable : false,
+						format : 'Y-m-d H:i:s',
+						value : new Date
+
+					},
+					{
+						fieldLabel : '呼叫电话',
+						xtype : 'textfield',
+						name : 'calltel',
+						regex : /^(1[3,5,8,7]{1}[\d]{9})|(((400)-(\d{3})-(\d{4}))|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{3,7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)$/,
+						regexText : '电话号码输入格式输入错误!',
+						allowBlank : false,
+						enableKeyEvents : true,
+						listeners : {
+							keypress : function(a, e) {
+								if (e.keyCode == 13) {
+									detailArea.fields['callname'].focus(false,
+											100);
+								}
+							}
+						}
+
+					},
+					{
+						fieldLabel : '呼叫人',
+						xtype : 'textfield',
+						name : 'callname',
+						allowBlank : false,
+						enableKeyEvents : true,
+						listeners : {
+							keypress : function(a, e) {
+								if (e.keyCode == 13) {
+									detailArea.fields['calltype'].focus(false,
+											100);
+									detailArea.fields['calltype'].expand();
+								}
+							}
+						}
+					},
+					{
+						fieldLabel : '事件来源',
+						xtype : 'combo',
+						name : 'callsource',
+						allowBlank : false,
+						emptyText : '--请选择事件来源--',
+						editable : true,
+						//typeAhead: true,
+						//forceSelection: true,
+						store : callChannelStore,
+						valueField : 'code',
+						queryMode : 'local',
+						displayField : 'name',
+						listeners : {
+							//select : function(a, e, c) {
+							//	detailArea.fields['callcategorylarge'].focus(
+							//			false, 100);
+							//	detailArea.fields['callcategorylarge'].expand();
+							//}
+						}
+					},
+					{
+						fieldLabel : '事件类型',
+						xtype : 'combo',
+						name : 'calltype',
+						allowBlank : false,
+						editable : true,
+						typeAhead: true,
+						forceSelection: true,
+						emptyText : '--请选择事件类型--',
+						store : callTypeStore,
+						//					triggerAction : 'query',// 这个表示 自动提示，
+						//					queryParam : 'autoContent', //这个是对输入的字符窜向后台传递的变量名字 
+						valueField : 'code',
+						queryMode : 'local',
+						displayField : 'name',
+						listeners : {
+							select : function(a, e, c) {
+								//		detailArea.fields['callsource'].focus(false, 100);
+								//detailArea.fields['callsource'].expand();
+								detailArea.fields['callcategorylarge'].focus(
+										false, 100);
+								detailArea.fields['callcategorylarge'].expand();
+							}
+						}
+
+					},
+
+					{
+						fieldLabel : '类别大类',
+						xtype : 'combo',
+						name : 'callcategorylarge',
+						allowBlank : false,
+						emptyText : '--请选择类别大类--',
+						editable : true,
+						typeAhead: true,
+						forceSelection: true,
+						queryMode : 'local',
+						displayField : 'name',
+						valueField : 'code',
+						store : callCategorylLargeStore,
+						listeners : {
+							select : function(a, b, c) {
+								var code = a.getValue();
+								call_eventmanageservice
+										.geteCategorylSmall(
+												code,
+												function(list) {
+													detailArea.fields['callcategorylsmall']
+															.reset();
+													callCategorylSmallStore
+															.loadData(list);
+												});
+								detailArea.fields['callcategorylsmall'].focus(
+										false, 100);
+								detailArea.fields['callcategorylsmall']
+										.expand();
+							}
+
+						}
+
+					}, {
+						fieldLabel : '类别小类',
+						xtype : 'combo',
+						name : 'callcategorylsmall',
+						queryMode : 'local',
+						editable : true,
+						typeAhead: true,
+						forceSelection: true,
+						emptyText : '--请选择类别小类--',
+						displayField : 'name',
+						valueField : 'code',
+						store : callCategorylSmallStore,
+						listeners : {
+							select : function(a,b,c) {
+								var code = a.getValue();
+								detailArea.fields['day'].setValue(b[0].data.stintday);
+								detailArea.fields['content'].focus(false, 100);
+							}
+						}
+					}, {
+						xtype : 'textarea',
+						name : 'content',
+						fieldLabel : '事件描述',
+						allowBlank : true,
+						height : 250,
+						width : 745,
+						rowspan : 4
+					}, {
+						name : 'code',
+						xtype : 'textarea',
+						hidden:true
+					} , {
+						name : 'day',
+						xtype : 'textarea',
+						hidden:true
+					} ]);
+
+	var showConversionWin = new WindowUnit('showConversionWin');
+	showConversionWin.setTitle('转办事件')
+
+	/**
+	 * 转办的form 表单　
+	 */
+
+	var detailConversion1 = new DetailAreaUnit('detailConversion1');
+	detailConversion1.setWidth(325);
+	detailConversion1.addToFieldSet([ {
+		fieldLabel : '部门',
+		xtype : 'combo',
+		name : 'orgzDis',
+		allowBlank : false,
+		queryMode : 'local',
+		displayField : 'name',
+		valueField : 'code',
+		editable : false,
+		triggerBaseCls : 'x-form-searchtrigger'
+
+	}, {
+		xtype : 'numberfield',
+		name : 'day',
+		step : 1,
+		minValue : 1,
+		maxValue : 9999,
+		readOnly : false,
+		allowBlank : false,
+		value : 1,
+		fieldLabel : '办理期限'
+	}, {
+		xtype : 'textarea',
+		fieldLabel : '意见',
+		height:100,
+		name : 'node',
+		allowBlank : true
+
+	}, {
+		xtype : 'textfield',
+		name : 'orgzCodeHid',
+		hidden : true
+	} ], {
+		fieldsPerRow : 1
+	});
+	detailConversion1.fields['orgzDis'].onTriggerClick = selectCate;
+	function appInit() {
+		view.init();
+		view.add(detailArea);
+		view.show('ADDNEWEVENT');
+		showConversionWin.init();// 事件转办win
+		showConversionWin.add(detailConversion1);// 事件转办win添加form
+		/* 呼叫时间 */
+		detailArea.fields['calltime'].setValue(new Date());
+		detailArea.fields['callsource'].setValue("0002");
+		detailArea.fields['calltel'].setValue(tel);
+		detailArea.fields['calltitle'].focus(false, 100);
+	}
+
+	/**
+	 * 增加事件
+	 */
+	detailArea.opAddNewEvent = function() {
+		if (!detailArea.checkFields())
+			return;
+		var obj = detailArea.getValueObject();
+		obj.turnorgz = getUserSession().orgzCode;
+		call_eventmanageservice.opAddNewEvent(obj, function(viewData) {
+			detailArea.fields['code'].setValue(viewData.message);
+			if (!viewData.isSucceed) {
+				Ext.alert('保存失败.' + viewData.message);
+			} else {
+				Ext.confirm('保存成功，是否直接处理',
+						function(btn2) {
+							if (btn2 == 'yes') {
+								
+								showConversionWin.show("ADDCONVERSION");
+								detailConversion1.fields['day'].setValue(obj.day);
+							}else{
+								
+							}
+						});
+				
+			}
+		});
+	}
+	/**
+	 * 转办
+	 */
+
+	 detailConversion1.turnBill = function() {
+		 if (!detailConversion1.checkFields())
+				return;
+		var billId = detailArea.fields['code'].getValue();//获取事件id
+		var orgz = detailConversion1.fields['orgzCodeHid'].getValue();
+		var node = detailConversion1.fields['node'].getValue();
+		var day = detailConversion1.fields['day'].getValue();
+		call_eventmanageservice.turnBill(billId, orgz, day, node, function(
+				viewData) {
+			if (!viewData.isSucceed) {
+				Ext.alert(viewData.message);
+			} else {
+				showConversionWin.close();
+				Ext.alert('转办成功');
+				detailArea.fields['content'].setValue('');
+				detailArea.fields['callname'].setValue('');
+				detailArea.fields['calltel'].setValue('');
+				detailArea.fields['calltitle'].setValue('');
+			}
+		});
+	}
+	/**
+	 * 结束
+	 */
+	 detailConversion1.opPass = function() {
+		Ext.prompt('请填写缘由', function(btn1, reason) {
+			if (btn1 == 'ok') {
+				showConversionWin.close();
+				Ext.confirm('您确认结束吗?缘由是：' + (reason ? reason : '无'),
+						function(btn2) {
+							if (btn2 == 'yes') {
+								var billId = detailArea.fields['code']
+										.getValue();//获取事件id
+								//var orgz = detailAreaPageTwo.fields['orgzcode'].getValue();
+								call_eventmanageservice.endBill(billId,reason, function(viewData) {
+											if (!viewData.isSucceed) {
+												Ext.alert(viewData.message);
+											} else {
+												
+												Ext.alert('已办结');
+												detailArea.fields['content'].setValue('');
+												detailArea.fields['callname'].setValue('');
+												detailArea.fields['calltel'].setValue('');
+												detailArea.fields['calltitle'].setValue('');
+											}
+
+										});
+							}
+						});
+			}
+		},true);
+
+	}
+
+	/**
+	 * 关闭
+	 */
+	 detailConversion1.close = function() {
+		showConversionWin.close();
+		//close();
+	}
+
+	Ext.onReady(appInit);
+</script>
+<body>
+</body>
+<script>
+	
+</script>
+</html>

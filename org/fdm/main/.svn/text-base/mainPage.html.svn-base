@@ -1,0 +1,975 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/SOC/resources/css/ext-all-debug.css" />
+<link rel="stylesheet" type="text/css" href="/SOC/examples/view/chooser/chooser.css" />
+<link rel="stylesheet" type="text/css" href="/SOC/org/fdm/css/font.css" />
+
+<link rel="stylesheet" type="text/css" href="/SOC/examples/shared/example.css" />
+<title>兰州市七里河区民情通督办监察系统</title>
+<script type="text/javascript" src="/SOC/ext-all.js"></script>
+<script type="text/javascript" src="/SOC/locale/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/SOC/examples/portal/portal.js"></script>
+<script type="text/javascript" src="/SOC/examples/shared/examples.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/ext-base.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/soc_base.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/page.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/win.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/list.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/detail.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/tree.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/lists.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/trees.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/treecombo.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/QueryAreaUnit.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/ChatAreaUnit.js"></script>
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/fieldsRankingService.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/sysInfoService.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_MenuTreeService.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_LoginService.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_MessageService.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/call_callEventService.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/call_eventmanageservice.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/call_CategoryStatisService.js'></script>
+
+</head>
+<script>
+Ext.Loader.setConfig({enabled: true});
+Ext.Loader.setPath('Ext.app', '/SOC/examples/portal/classes');
+Ext.Loader.setPath('Ext.chooser', '/SOC/examples/view/chooser');
+Ext.Loader.setPath('Ext.ux', '/SOC/examples/ux');
+Ext.require([
+    'Ext.layout.container.*',
+    'Ext.resizer.Splitter',
+    'Ext.fx.target.Element',
+    'Ext.fx.target.Component',
+    'Ext.window.Window',
+    'Ext.app.Portlet',
+    'Ext.app.PortalColumn',
+    'Ext.app.PortalPanel',
+    'Ext.app.Portlet',
+    'Ext.app.PortalDropZone',
+    'Ext.app.GridPortlet',
+    'Ext.app.ChartPortlet',
+    'Ext.button.Button',
+    'Ext.data.proxy.Ajax',
+    'Ext.chooser.InfoPanel',
+    'Ext.chooser.IconBrowser',
+    'Ext.chooser.Window',
+    'Ext.ux.DataView.Animated',
+    'Ext.toolbar.Spacer'
+]);
+
+//Ext.create('Ext.app.Portal');
+loadAreaConfig('/SOC/org/fdm/main/mainPage.cfg.xml');
+
+var grid = null;
+var dayPlanPanel=null;
+//-------------------------userSession--------------------------
+var userSession=null;
+
+sysInfoService.getCurrentUserSession(
+{
+	callback:function(cus)
+	{
+		userSession=cus;
+		if(userSession == null){
+			var wh = window.open('/SOC/org/fdm/main/login.html');
+			window.opener=null;
+			window.close();
+		}
+	},
+	async:false
+});
+
+//--------------------fieldsRanking------------------------------
+var fieldsRankingBuff=null;
+
+fieldsRankingService.loadFieldsRankingConfigs(userSession.logID,function(m)
+{
+	fieldsRankingBuff=m;
+});
+
+//-----------------修改密码---------------------
+var pageId='mainPage';
+
+var row1,row2,row3,row4;
+
+var modifyPassWordWin=new WindowUnit('modifyPassWordWin');
+modifyPassWordWin.setTitle('修改密码');
+
+var modifyPassWordArea=new DetailAreaUnit('modifyPassWordArea');
+
+modifyPassWordArea.addToFieldSet([{
+    fieldLabel: '登陆ID',
+    name: 'logID',
+    xtype:'textfield'
+}, {
+    fieldLabel: '原密码',
+    name: 'oldPassWord',
+    xtype:'textfield',
+    allowBlank: false
+}, {
+    fieldLabel: '新密码',
+    name: 'newPassWord',
+    xtype:'textfield',
+    allowBlank: false
+}, {
+        fieldLabel: '确认密码',
+        name: 'rePassWord',
+        xtype:'textfield',
+        allowBlank: false
+}],{fieldsPerRow:1});
+
+modifyPassWordArea.setWidth(230);
+//---------------------------------------------------
+var reLoginWin=new WindowUnit('reLoginWin');
+reLoginWin.setTitle('重登录');
+
+var reLoginArea=new DetailAreaUnit('reLoginArea');
+reLoginArea.addToFieldSet([{
+    fieldLabel: '登陆ID',
+    name: 'logID',
+    xtype:'textfield'
+}, {
+    fieldLabel: '密码',
+    name: 'passWord',
+    xtype:'textfield',
+    allowBlank: false
+}],{fieldsPerRow:1});
+
+reLoginArea.fields['passWord'].on('specialkey',function(_this,_e)
+{
+	if(_e.getKey()==13)
+	{
+		reLoginArea.login();
+	}
+});
+
+reLoginArea.setWidth(230);
+
+var smsWin=new WindowUnit('smsWin');
+smsWin.setTitle('发送短信');
+
+var smsArea=new DetailAreaUnit('smsArea');
+smsArea.addToFieldSet([{
+    fieldLabel: '电话号码',
+    name: 'tel',
+    xtype:'textfield',
+    allowBlank: false
+}, {
+    fieldLabel: '内容',
+    name: 'content',
+    xtype:'textarea',
+    height:100,
+    allowBlank: false
+}],{fieldsPerRow:1});
+smsArea.setWidth(300);
+
+var header = new Ext.Panel({
+	xtype: 'Ext.panel.Panel',
+    id: 'header', 
+    region: 'north', 
+    html:'<table width="100%" background="/SOC/org/fdm/images/desktop/top_bg1.png">'
+    	+'<tr valign="top">'
+		+'<td width="33%"><table width="100%"><tr><td align="center"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1000" height="70"><param name="movie" value="/SOC/org/fdm/flash/top_flash.swf" /><param name="quality" value="high" /><embed src="/TLJT/org/fdm/flash/tl.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="100%" height="180"></embed></object></td></tr></table></td>'
+		//+'<td width="33%"><table width="100%"><tr><td align="center"></td></tr></table></td>'
+		+'<td width="33%" align="right">'
+			+'<table width="100%">'
+				+'<tr height="35">'
+					+'<td align="right">'
+						+'<span class="welcomefont" id="welcome"></span>'
+					+'</td>'
+				+'</tr>'
+				+'<tr>'
+					+'<td align="right">'
+					+'<a href="#" onclick="showMessageWin(null);"><img id="im"  src="/SOC/org/fdm/images/desktop/about.gif" title="即时消息"></img></a>'
+					//+'<a href="#" onclick="myFile();"><img src="/SOC/org/fdm/images/desktop/myfile.gif" title="我的公文"></img></a>'
+					+'<a href="#" onclick="showSmsWin();"><img src="/SOC/org/fdm/images/desktop/msn.gif" title="发送短信"></img></a>'
+					+'<a href="#" onclick="showModufiPassWordWin();"><img src="/SOC/org/fdm/images/desktop/modify_password.gif" title="修改密码"></img></a>'
+					+'<a href="#" onclick="userExit();"><img src="/SOC/org/fdm/images/desktop/exit.gif" title="注销"></img></a></td>'
+    				
+					+'</tr>'
+				
+				+'</tr>'
+			+'</table>'
+		+'</td>'
+	+'</tr></table>', 
+    height: 65 
+});
+
+var cssStore = Ext.create('Ext.data.Store',{
+	fields: ['TEXT','VALUE']
+});  
+cssStore.loadData([['灰','all-gray'],['蓝','standard']]);
+var simpleCombo = Ext.create('Ext.form.field.ComboBox', {  
+	    fieldLabel: '样式',  
+	    displayField: 'TEXT', 
+	    valueField:'VALUE',  
+	    width: 150,  
+	    labelWidth: 50,  
+	    store: cssStore,  
+	    queryMode: 'local',  
+	    typeAhead: true  ,
+	    listeners:{   
+	    	  select:function(combo, record,index){ 
+	    		  Ext.util.CSS.swapStyleSheet('theme','/SOC/resources/css/ext-'+combo.getValue()+'.css');
+              	
+	    	  }
+	    }
+	});  
+
+var bottom = Ext.create('Ext.Toolbar',{ 
+    id:"bottom", 
+    region:"south", 
+    height:23, 
+    items:['->','版权所有：兰州北科维拓科技股份有限公司','->',simpleCombo] 
+}); 
+
+var treePanel = Ext.create('Ext.tree.Panel', { 
+    title: '导航菜单', 
+    icon:iconPath.add,
+    margins : '0 0 -1 1', 
+    region:'west', 
+    border : false, 
+    enableDD : false, 
+    split: true, 
+    width : 205, 
+    minSize : 130, 
+    maxSize : 300, 
+    rootVisible: false, 
+    containerScroll : true, 
+    collapsible : true, 
+    autoScroll: false ,
+    store : Ext.create('Ext.data.TreeStore',{
+    	fields:['id','text','progParam']
+    }),
+    listeners : {  
+    	        'itemclick' : function(view,re){ 
+    	        	if(re.get('leaf') == true)
+    	        		openTab(re.get('id'),re.get('text'),re.get('progParam'));
+    	        }  ,
+    	        'beforeitemexpand': function(node,obj){ 
+    	        	if(node.hasChildNodes() == false)
+    	        		findChildren(node.get('id'));
+    	        }  
+    	    }  
+
+}); 
+
+
+    
+var menuPanel = Ext.create('Ext.Panel', {
+    title: '导航菜单',
+    region:'west', 
+    collapsible : true, 
+    split: true, 
+    width : 200, 
+    minSize : 130, 
+    maxSize : 300, 
+    layout: {
+		type: 'accordion',
+        hideCollapseTool : true
+    },
+    hideCollapseTool:true
+});
+
+SAM_MenuTreeService.findChildrens(getUserSession().logID,function(list)
+{
+	if(list.length>0){
+		var sysPanel =null;
+		for(var i=0;i<list.length;i++){
+			
+				var obj = list[i];
+				sysPanel = Ext.create('Ext.panel.Panel', {
+			        title: obj.text,
+			        autoScroll: true
+			     });
+				var IconBrowser =Ext.create('Ext.chooser.IconBrowser',
+						{
+					cls: 'img-chooser-view',
+					baseCls: 'img-chooser-view',
+					selectedItemCls: 'img-chooser-view',
+				    listeners: {
+				    	itemclick: function(view,record,item,index){openTab(record.data.id,record.data.name,record.data.progParam);}
+				    }});
+				sysPanel.add(IconBrowser);
+				menuPanel.add(sysPanel);
+				IconBrowser.getStore().loadData(obj.child);
+				
+		}
+	}
+});
+//------------------grid---------------------------
+var start =Ext.Date.format(Ext.Date.getFirstDateOfMonth(new Date()),'Y-m-d');
+var end =Ext.Date.format(Ext.Date.getLastDateOfMonth(new Date()),'Y-m-d');
+var today = Ext.Date.format(new Date(),'Y-m-d');
+var today1 = Ext.Date.format(new Date(),'Y-m-d')+' 23:59:59';
+var grid = new Ext.grid.Panel({
+                store: Ext.create('Ext.data.Store',{fields:['calltitle','calltime','callperson','calltel','code']}),
+                columns: [{
+                	header : '事件名称',
+                	align : 'center',
+                	flex : 1,
+                	dataIndex : 'calltitle'
+
+                },{
+                	header : '来电时间',
+                	align : 'center',
+                	flex : 1,
+                	dataIndex : 'calltime',
+                		renderer : Ext.util.Format.dateRenderer('Y-m-d H:i:s')
+                },{
+                	header : '来电号码',
+                	align : 'center',
+                	flex : 1,
+                	dataIndex : 'calltel'
+
+                },{
+                	header : '受理人',
+                	align : 'center',
+                	flex : 1,
+                	dataIndex : 'callperson'
+
+                },{
+                	header : '事件编码',
+                	hidden : true,
+                	dataIndex : 'code'
+
+                }],
+               // selModel: sm,
+                stripeRows: true,
+                border: false,
+                sortableColumns:false
+             });
+grid.on('itemdblclick',function(){
+	var record = grid.getSelectionModel().getLastSelected();
+	openTab('CALL100','事件查看','VIEW&eventcode='+record.data['code']);
+});             
+call_eventmanageservice.getEvents(today,today1,function(list) {
+	grid.getStore().loadData(list);
+});
+//-----------------chat------------------------
+var orgzEventstore = Ext.create('Ext.data.JsonStore', {
+	fields : [ 'name', 'data1', 'catecode' ]
+});
+
+call_CategoryStatisService.getTEventChartData(today,today1,{
+	callback:function(list) {
+	orgzEventstore.loadData(list.resultList);
+},
+	async:false
+});
+var total = 0;
+orgzEventstore.each(function(rec) {
+	total += rec.get('data1');
+});
+
+var chart = Ext.create('Ext.chart.Chart', {
+	xtype : 'chart',
+	animate : true,
+	store : orgzEventstore,
+	shadow : true,
+	insetPadding : 10,
+	//theme : 'Base:gradients',
+	axes: [{
+        type: 'Numeric',
+        position: 'left',
+        title: '111',
+        fields: ['data1'],
+        minimum: 0,
+        maximum: 100,
+        label: {
+            renderer: Ext.util.Format.numberRenderer('0,0')
+        },
+        title: '',
+        grid: {
+            odd: {
+                stroke: '#555'
+            },
+            even: {
+                stroke: '#555'
+            }
+        }
+    }, {
+        type: 'Category',
+        position: 'bottom',
+        fields: ['name'],
+        title: '今天共受理'+total+'个事件'
+    }],
+    
+	series : [ {
+		type : 'column',
+		xField: 'name',
+        yField: 'data1',
+       
+		//showInLegend : true,
+		//donut : false,
+		
+		renderer: function(sprite, storeItem, barAttr, i, store) {
+			if(i==0)
+				barAttr.fill = 'red';
+			else if(i==1)
+				barAttr.fill = 'yellow';
+			else if(i==2)
+				barAttr.fill = 'green';
+			else if(i==3)
+				barAttr.fill = 'blue';
+			else if(i==4)
+				barAttr.fill = 'blank';
+			else if(i==5)
+				barAttr.fill = 'gray';
+			else if(i==6)
+				barAttr.fill = 'red';
+			else if(i==7)
+				barAttr.fill = 'red';
+			else if(i==8)
+				barAttr.fill = 'red';
+			return barAttr;
+                },
+		
+		tips : {
+			trackMouse : true,
+			width : 140,
+			height : 28,
+			renderer : function(storeItem, item) {
+				var total = 0;
+				orgzEventstore.each(function(rec) {
+					total += rec.get('data1');
+				});
+				this.setTitle(storeItem.get('name') + ': '
+						+storeItem.get('data1')
+						);
+			}
+		},
+		highlight : {
+			segment : {
+				margin : 20
+			}
+		},
+		listeners : {
+			itemmouseup : function(obj) {
+				openTab('CALL100','事件查看','VIEW&catecode='+obj.storeItem.data['catecode']+'&start='+today+'&end='+today1);
+			}
+		}
+	} ]
+});
+
+var typeEventstore = Ext.create('Ext.data.JsonStore', {
+	fields : [ 'name', 'data1', 'catecode' ]
+});
+var chart2 = Ext.create('Ext.chart.Chart', {
+	xtype: 'chart',
+    animate: true,
+    store: typeEventstore,
+    shadow: true,
+    legend: {
+        position: 'right'
+    },
+    insetPadding: 50,
+    theme: 'Base:gradients',
+    series: [{
+        type: 'pie',
+        field: 'data1',
+        showInLegend: true,
+        donut: false,
+        tips: {
+          trackMouse: true,
+          width: 140,
+          height: 28,
+          renderer: function(storeItem, item) {
+            //calculate percentage.
+            var total = 0;
+            typeEventstore.each(function(rec) {
+                total += rec.get('data1');
+            });
+            this.setTitle(storeItem.get('name') + ': '
+					+storeItem.get('data1')
+					);
+          }
+        },
+        highlight: {
+          segment: {
+            margin: 20
+          }
+        },
+		listeners : {
+			itemmouseup : function(obj) {
+				openTab('CALL100','事件查看','VIEW&catecode='+obj.storeItem.data['catecode']+'&start='+start+'&end='+end);
+			}
+		}
+       }]
+});
+
+call_CategoryStatisService.getTEventChartData(start,end,function(list) {
+	typeEventstore.loadData(list.resultList);
+});
+//-----------------------------------------
+                                 
+var functionPanel = Ext.create('Ext.tab.Panel',{ 
+    id: 'mainTabPanel', 
+    region: 'center',  
+    margins: '0 0 0 0',
+    
+    border:false,
+    items:[
+       	{
+       		id:'desktop',
+       		title:'我的桌面',
+       		layout:'column',
+       		border:false,
+       		//bodyStyle: 'border:0px;',
+       		items:[
+       		{
+       			columnWidth:.5,
+       			bodyStyle:panelBodyStyle,
+       			style:'padding:5px',
+       			items:[
+       			
+       			{
+       				//title: '待办事项',
+       				height:210,
+       				layout : 'fit',
+       				items:[grid]
+       			},
+    			{
+    				height:10,
+    				bodyStyle:panelBodyStyle
+    			},{
+       				title: '每月事件统计',
+       				height:310,
+       				layout : 'fit',
+       				items:[chart2]
+       			}]
+       		},
+       		{
+       			columnWidth:.5,
+       			bodyStyle:panelBodyStyle,
+       			style:'padding:5px',
+       			items:[{
+       				//title: '公告',
+       				height:210,
+       				html:'<iframe width="100%" height="100%" frameborder="0" src="/SOC/org/fdm/main/warning.html"></iframe>'
+       			},
+    			{
+    				height:10,
+    				bodyStyle:panelBodyStyle
+    			},{
+       				title: '每日事件统计',
+       				height:310,
+       				layout : 'fit',
+       				items:[chart]
+       			}]
+       		}]
+       	}]
+});
+//---------------
+function findChildren(id)
+{
+	SAM_MenuTreeService.findChildren(getUserSession().logID,id,function(list)
+	{
+		if(list.length>0){
+			for(var i=0;i<list.length;i++){
+				var obj = list[i];
+				//obj.icon=iconPath.add;
+			}
+			treePanel.getStore().getNodeById(id).appendChild(list);  
+		}
+			
+	});
+}
+
+
+function showSmsWin()
+{
+	smsWin.show('MODIFY');
+}
+
+function showModufiPassWordWin()
+{
+	modifyPassWordWin.show('MODIFY');
+}
+smsArea.send=function()
+{
+	if(!smsArea.checkFields()) return;
+	var obj=smsArea.getValueObject();
+	smsWin.close();
+	Ext.alert('已发送');
+}
+modifyPassWordArea.opModifyPassWord=function()
+{
+	if(!modifyPassWordArea.checkFields()) return;
+	
+	var obj=modifyPassWordArea.getValueObject();
+	
+	if(obj.newPassWord!=obj.rePassWord)
+	{
+		Ext.alert('两次输入的密码不一致');
+		return;
+	}
+	
+	SAM_LoginService.opModifyPassWord(obj.oldPassWord,obj.newPassWord,function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			Ext.alert('修改失败.'+viewData.message);
+		}
+		else
+		{
+			modifyPassWordWin.close();
+			Ext.alert('密码已修改');
+		}
+	});
+}
+
+window.onbeforeunload=function()
+{
+	var   n   =   window.event.screenX   -   window.screenLeft;      
+    var   b   =   n   >   document.documentElement.scrollWidth-25;   
+    var   h   =   document.body.clientHeight - window.event.screenY;
+    
+    if((b && window.event.clientY < 0) || (window.event.clientY > 0 && h<0) || window.event.altKey )      
+    {
+    	SAM_MessageService.updateUser('off',{
+		callback:function()
+		{
+		},
+			async:false
+		});
+    	SAM_LoginService.logout(userSession.logID,
+		{
+		callback:function()
+		{
+		},
+		async:false
+		});
+	}
+	var isChrome = navigator.userAgent.indexOf("Chrome") > -1;
+	if(isChrome){
+		SAM_MessageService.updateUser('off',{
+		callback:function()
+		{
+		},
+			async:false
+		});
+		SAM_LoginService.logout(userSession.logID,
+		{
+		callback:function()
+		{
+		},
+		async:false
+		}); 
+	}
+}
+
+function reLogin()
+{
+	reLoginWin.show('LOGIN');
+	reLoginArea.fields['passWord'].focus();
+	//caller=_caller;
+}
+
+function userExit()
+{
+	var wh = window.open('/SOC/org/fdm/main/login.html');
+	window.opener=null;
+	window.close();
+}
+reLoginArea.login=function()
+{
+	if(!reLoginArea.checkFields()) return;
+	
+	var obj=reLoginArea.getValueObject();
+	
+	SAM_LoginService.login(obj.logID,obj.passWord,
+	{
+		callback:function(viewData)
+		{
+			if(!viewData.isSucceed)
+			{
+				Ext.alert(viewData.message);
+			}
+			else
+			{
+				reLoginWin.close();
+				//if(caller != null)
+				//	caller.location.reload();
+				//caller=null;
+			}
+		}
+		,
+		async:false
+	});
+}
+
+function appInit()
+{
+	Ext.create('Ext.Viewport', { 
+                layout: 'border', 
+                items:[ 
+                    header, 
+                   // treePanel, 
+                    menuPanel,
+                    functionPanel, 
+                    bottom 
+                ] 
+    }); 
+	findChildren('root');
+	
+	reLoginWin.init();
+	reLoginWin.add(reLoginArea);
+	//-------------欢迎-------------
+	Ext.getDom('welcome').innerHTML='来自<b>'+getUserSession().orgzName+'</b>的<a class="button" title="修改密码" onclick="showModufiPassWordWin();"><b>'+getUserSession().userName+'</b></a> 欢迎您登陆';
+	
+	modifyPassWordWin.init();
+	modifyPassWordWin.add(modifyPassWordArea);
+	
+	
+	smsWin.init();
+	smsWin.add(smsArea);
+	
+}
+function openTab(menuCode,menuName,progParams)
+{
+	var n=functionPanel.getComponent(menuCode);
+	if(!n){
+		
+		if(menuCode=='CALL008'){
+			closeTab('CALL100');
+			closeTab('CALL101');
+		}
+		else if(menuCode=='CALL100'){
+			closeTab('CALL008');
+			closeTab('CALL101');
+		}
+		else if(menuCode=='CALL101'){
+			closeTab('CALL100');
+			closeTab('CALL008');
+		}
+		
+		var url='/SOC/view?functionId='+menuCode;
+		
+		if(progParams)
+		{
+			url+=('&progParams='+progParams);
+		}
+		showLoading();
+
+		Ext.Ajax.request({
+		    url: url,
+		   //params: { a: 10, b: 20 },
+		    method: 'GET',
+		    success: function (response, options) {
+		    	var responseText = 'functionId = menuCode;'
+		    		responseText+='functionUrl = url;';
+		    	responseText+='functionProgParam = progParams;';
+		    	responseText+='functionTitle = menuName;';
+		    	responseText+='appPages = {};';
+		    	responseText+=menuCode+'=function(v){eval(v);};';
+		    	responseText+=response.responseText;
+		    	eval(responseText);
+				setTimeout('hideLoading();',3000);
+
+		    },
+		    failure: function (response, options) {
+		        Ext.MessageBox.alert('失败', '请求超时或网络故障,错误编号：' + response.status);
+		    }
+		});
+	}else
+		functionPanel.setActiveTab(menuCode);
+}
+
+function openTab1(menuCode,menuName,progParams)
+{
+	var n=functionPanel.getComponent(menuCode);
+	if(!n){
+
+		
+	var url='/SOC/view?functionId='+menuCode;
+		
+		if(progParams)
+		{
+			url+=('&progParams='+progParams);
+		}
+		url = 'test.html';
+		var newPanel=Ext.create('Ext.Component',{ 
+	          id: menuCode, 
+	          title: menuName, 
+	          closable:true,
+	          iconCls:'home', 
+	          layout: 'fit' ,
+	          loader: { url: url, scripts: true, params:'foo=123' , autoLoad: true}
+	    });
+		functionId = menuCode;
+		
+		functionPanel.add(newPanel);
+	}
+	functionPanel.setActiveTab(menuCode);
+}	
+function openTab1(menuCode,menuName,progParams)
+{
+	if(functionPanel.items.length>8)
+	{
+		//Ext.alert('你打开的窗口过多,请关闭暂时无用的以确保系统运行速度.');
+		//return;
+	}
+	var n=functionPanel.getComponent(menuCode);
+	if(!n){
+
+	var url='/SOC/view?functionId='+menuCode;
+		
+		if(progParams)
+		{
+			url+=('&progParams='+progParams);
+		}
+		showLoading();
+		functionUrl = url;
+		functionId = menuCode;
+		functionTitle = menuName;
+		functionProgParam = progParams;
+		//appPages = {};
+		Ext.Loader.loadScript(url);
+		setTimeout('hideLoading();',3000);
+	}else{
+		functionPanel.setActiveTab(menuCode);
+	}
+}	
+function closeTab(menuCode)
+{
+	var tab=functionPanel.getComponent(menuCode);
+	
+	if(tab)
+	{
+		functionPanel.remove(tab,true);
+	}
+}
+
+var loadingCount=0;
+
+function showLoading()
+{
+	document.getElementById('loading').style.display='';
+	document.getElementById('loading_ico').style.display='';
+	loadingCount++;
+}
+
+function hideLoading()
+{
+	loadingCount--;
+	if(loadingCount==0)
+	{
+		document.getElementById('loading').style.display='none';
+		document.getElementById('loading_ico').style.display='none';
+	}
+	else if(loadingCount==-1)
+	{
+		loadingCount=0;
+	}
+}
+
+
+//------------------------------即时消息---------------------------------------
+
+var chatArea=null;
+var iList=null;
+var timeoutProcess =null;
+
+window.onload =function() {
+  
+	SAM_MessageService.updateUser('on');
+	chatArea=new ChatAreaUnit('chatArea');
+	chatArea.init();
+	getNewMessages();
+}
+
+function getNewMessages()
+{
+	SAM_MessageService.getMessages(function(list)
+	{
+		if(list.length>0){
+			if(timeoutProcess == null){
+				FreshPointSet();
+				iList=list;
+				//document.getElementById('msgSound').play();
+			}else{
+				chatArea.receiveMessages(list);
+				FreshPointclear();
+			}
+		}
+	});      
+}
+
+function FreshPointSet()
+{
+    timeoutProcess  = setTimeout("FreshPointSet()", 500);
+    
+    var ExtPoint = Ext.get('im');
+    ExtPoint.fadeOut({duration:0.05});
+    ExtPoint.fadeIn({duration:0.05});
+        
+}
+function FreshPointclear()
+{
+	if(timeoutProcess != null){
+    	clearTimeout(timeoutProcess);   
+    	timeoutProcess = null;
+    }     
+}
+
+function showMessageWin(obj){
+	if(chatArea == null){
+		chatArea=new ChatAreaUnit('chatArea');
+		chatArea.init();
+	}
+	if(chatArea.getIsHide()==true){
+		chatArea.show();
+		if(timeoutProcess != null){
+			getNewMessages();
+		}
+	}
+	if(obj != null){
+		 chatArea.setObj(obj);
+	}
+}
+function returnMsg(list)
+{	
+	if(chatArea.getIsHide()==true){
+		if(timeoutProcess == null){
+			FreshPointSet();
+		}
+		document.getElementById('msgSound').play();	
+	}else{
+    	chatArea.receiveMessages(list);
+    }
+}
+function updateUser(list)
+{
+	if(chatArea != null)	
+	chatArea.setIsLine(list);
+}
+
+//--------------------------即时消息-------------------------------------------	
+
+Ext.onReady(appInit);
+</script>
+<body>
+<embed id="msgSound" loop="0" autostart="false" style="display:none" src="/SOC/tools/msg.wav"></embed>
+</body>
+<script>
+var m_height = parseInt(document.body.clientHeight)/2;
+var m_width = parseInt(document.body.clientWidth)/2;
+document.writeln('<div id="loading" style="position:absolute;z-index:99;width:100%;height:100%;display:none;background-color:#ffffff;opacity:.20;filter:alpha(opacity=20);"></div><div id="loading_ico" style="position:absolute;display:none;left:'+m_width+';top:'+m_height+';z-index:100;"><img src="/SOC/org/fdm/images/loading.gif" width="32" height="32" style="margin-right:8px;" align="absmiddle"/><font style="font-size:13px;color:#006699">加载中...</font></div>');
+
+
+document.oncontextmenu=function stop(){
+
+	//return false;
+
+	}
+
+
+
+
+</script>
+</html>

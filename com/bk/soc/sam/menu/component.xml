@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	1.系统管理-系统定义 
+-->
+<Component sys="SAM" id="com.bk.soc.sam.menu" name="菜单管理" ver="1.00">
+	<Function id="SAM0002" name="菜单管理" isReport="false">
+		<property name="url"  value="/view/Menu.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+</Component>

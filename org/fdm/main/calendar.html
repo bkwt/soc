@@ -1,0 +1,272 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/SOC/resources/css/ext-all.css" />
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type="text/javascript" src="/SOC/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="/SOC/ext-all.js"></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_CalendarBO.js'></script>
+</head>
+
+<body style="overflow:hidden">
+<center>
+<table border="0" width="100%">
+	<tr>
+		<td><div id="cal"></div></td>
+		<td width="1%"></td>
+		<td width="98%"><div id="dayPlan"></div></td>
+		<td width="1%"></td>
+	</tr>
+</table>
+</center>
+</body>
+<script>
+var dayPlanPanel=null;
+var sDate=new Date();
+var selectedDate=sDate.format('Y-m-d');
+
+var dn = ['日','一','二','三','四','五','六'];
+
+function appInit()
+{
+	dayPlanPanel=new Ext.Panel(
+	{
+		renderTo:'dayPlan',
+		title:"日程安排",
+		frame:true,
+		border:false,
+		height:175,
+		layout:'border',
+		items:[
+			{
+				id:'signDate',
+				tag:'div',
+				region: 'north',
+				width:190,
+				height:17
+			},
+			{
+				region: 'center',
+				id:'note',
+				xtype:'textarea',
+				style:'overflow:hidden',
+				height:60
+			},
+			{
+				id:'hid',
+				xtype:'hidden'
+			}
+		]
+		,
+		buttons:[
+			{
+				text:'保存',
+				minWidth:10,
+				handler:opSaveCalendar
+			},
+			{
+				text:'删除',
+				minWidth:10,
+				handler:opDeleteCalendar
+			}
+		]
+	});
+	
+	window.onresize=function(){dayPlanPanel.findById('note').setWidth(dayPlanPanel.getInnerWidth()-1)};
+	
+	selectDate(selectedDate);
+	
+	//-----------clock-------------
+	//setInterval('tick();',1000);
+}
+
+function queryCalendar()
+{
+	SAM_CalendarBO.queryCalendar(selectedDate,function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			alert(viewData.message);
+		}
+		else
+		{
+			if(viewData.resultList.length>0)
+			{
+				dayPlanPanel.findById('hid').setValue(viewData.resultList[0].hid);
+				dayPlanPanel.findById('note').setValue(viewData.resultList[0].note);
+			}
+			else
+			{
+				dayPlanPanel.findById('hid').setValue('');
+				dayPlanPanel.findById('note').setValue('');
+			}
+			dayPlanPanel.findById('signDate').body.update(sDate.format('Y年m月d日'));
+		}
+	});
+}
+
+function opSaveCalendar()
+{
+	var obj={};
+	
+	obj.hid=dayPlanPanel.findById('hid').getValue();
+	obj.note=dayPlanPanel.findById('note').getValue();
+	obj.signDate=Date.parseDate(selectedDate,'Y-m-d');
+	
+	SAM_CalendarBO.opSaveCalendar(obj,function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			alert(viewData.message);
+		}
+		else
+		{
+			queryCalendar();
+			updateCalendar(sDate.format('Y'),sDate.getMonth()); 
+		}
+	});
+}
+
+function opDeleteCalendar()
+{
+	Ext.MessageBox.confirm('确认','您确认删除吗?',function(btn)
+	{
+		if(btn=='yes')
+		{
+			var obj={};
+	
+			obj.hid=dayPlanPanel.findById('hid').getValue();
+			obj.note=dayPlanPanel.findById('note').getValue();
+			obj.signDate=Date.parseDate(selectedDate,'Y-m-d');
+			
+			SAM_CalendarBO.opDeleteCalendar(obj,function(viewData)
+			{
+				if(!viewData.isSucceed)
+				{
+					alert(viewData.message);
+				}
+				else
+				{
+					queryCalendar();
+					updateCalendar(sDate.format('Y'),sDate.getMonth()); 
+				}
+			});
+		}
+	});
+}
+
+function selectDate(_selectedDate)
+{
+	selectedDate=_selectedDate;
+	sDate=Date.parseDate(selectedDate,'Y-m-d');
+	
+	queryCalendar();
+}
+
+Ext.onReady(appInit);
+//-------------------------------------------------------------------
+var nowDate=new Date();
+
+function updateCalendar(yyyy,mm)
+{
+		if(mm<0)
+		{
+			mm=11;
+			yyyy--;
+		}
+		else if(mm>11)
+		{
+			mm=0;
+			yyyy++;
+		}
+		
+		y=yyyy;
+		m=mm;
+		
+		var ds = new Date(yyyy,mm,1).getFirstDateOfMonth();
+		
+		//-----------------------------------
+		var signedDays={};
+       	
+       	SAM_CalendarBO.querySignedDays(ds,ds.getLastDateOfMonth(),
+       	{
+	       	callback:function(viewData)
+	       	{
+	       		if(viewData.isSucceed)
+				{
+					signedDays=viewData.resultList[0];
+				}
+	       	},
+	       	async:false
+       	});
+       	
+		//-----------------------------------
+		while(ds.getDay()!=0)
+		{
+			ds=ds.add(Date.DAY, -1);
+		}
+		
+		var str = [
+             '<table cellspacing="0">',
+                '<tr  height=25><td class="x-date-left"><a href="javascript:updateCalendar(y,--m)" title="', '上一月' ,'">&#160;</a></td><td class="x-date-middle" align="center">',yyyy,'年',mm+1,'月</td><td class="x-date-right"><a href="javascript:updateCalendar(y,++m)" title="', '下一月' ,'">&#160;</a></td></tr>',
+                '<tr><td colspan="3"><table class="x-date-inner" cellspacing="0" ><thead><tr>'];
+       
+        for(var i = 0; i < 7; i++){
+           str.push("<th><span>", dn[i].substr(0,1), "</span></th>");
+        }
+        str[str.length] = "</tr></thead><tbody><tr>";
+       
+       	
+       	var daystyle='';
+       	var signed='';
+       	var monthstyle='';
+       	
+        for(var i = 0; i < 42; i++) 
+        {
+            if(i % 7 == 0 && i != 0){
+                str[str.length] = "</tr><tr>";
+            }
+            
+            var currentDate=ds.add(Date.DAY,i);
+            
+            //-----------css-------------------
+            if(currentDate.format('md')==nowDate.format('md'))
+            {
+            	daystyle='border:1px;border-left:#15428b solid 1px;border-right:#15428b solid 1px;border-top:#15428b solid 1px;border-bottom:#15428b solid 1px';
+            }
+            else
+            {
+            	daystyle='';
+            }
+            
+            if(currentDate.format('m')==mm+1)
+            {
+            	monthstyle='';
+            }
+            else
+            {
+            	monthstyle='color:#bbbbbb;';
+            }
+            
+            if(signedDays[currentDate.format('Y-m-d')])
+            {
+            	signed='border-bottom:red solid 1px';
+            }
+            else
+            {
+            	signed='';
+            }
+            //---------------------------------
+            str[str.length] = '<td style="font-size:12px;'+daystyle+'"><a href="#" onclick="selectDate(\''+currentDate.format('Y-m-d')+'\')"><span style="'+monthstyle+signed+'">'+currentDate.getDate()+'</span></a></td>';
+        }
+        str[str.length] = '</tr></tbody></table></td></tr><tr><td colspan="3" class="x-date-bottom" align="center"></td></tr></table><div class="x-date-mp"></div>';
+
+        document.getElementById('cal').innerHTML = str.join("");
+}
+        
+var dt = nowDate;
+var y=dt.format('Y');
+var m=dt.getMonth();
+updateCalendar(y,m);
+</script>
+</html>

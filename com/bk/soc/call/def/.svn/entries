@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/call/def"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="99"
+   kind="dir"
+   committed-date="2012-08-15T08:56:16.509250Z"/>
+<entry
+   name="FoundationDataBaseBO.java"
+   checksum="2ca4dc7c6308b27fcd8e7f5e5a09530a"
+   last-author="ds"
+   committed-rev="92"
+   text-time="2012-08-14T05:54:56.649000Z"
+   kind="file"
+   committed-date="2012-08-14T05:54:56.649875Z"/>
+<entry
+   name="FoundationDataBaseService.java"
+   checksum="6fbf32934bcecf7a5fdf3cc9642f2361"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IFoundationDataBaseDao.java"
+   checksum="7e3e1a498476e4c1b93779ad12c10962"
+   last-author="ds"
+   committed-rev="99"
+   text-time="2012-08-15T08:56:16.509000Z"
+   kind="file"
+   committed-date="2012-08-15T08:56:16.509250Z"/>
+<entry
+   name="component.xml"
+   checksum="fb977c301c152914ffb2d703a4bc8900"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="data"
+   kind="dir"/>
+<entry
+   name="view"
+   kind="dir"/>
+</wc-entries>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/SOC/resources/css/ext-all.css" />
+<title>SOC v1.0</title>
+<script type="text/javascript" src="/SOC/ext-all.js"></script>
+<script type="text/javascript" src="/SOC/locale/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/ext-base.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/view.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/detail.js"></script>
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_SystemDefineService.js'></script>
+
+</head>
+<script>
+functionId = 'SAM0001';
+loadAreaConfig();
+
+var view = new ViewUnit('view');
+
+var detailArea=new DetailAreaUnit('detailArea');
+detailArea.addToFieldSet([{
+    fieldLabel: '系统编码',
+    name: 'code',
+    xtype:'textfield',
+    allowBlank: false
+    
+}, {
+    fieldLabel: '名称',
+    name: 'name',
+    xtype:'textfield',
+    allowBlank: false
+}, {
+    fieldLabel: '备注',
+    name: 'note',
+    xtype:'datefield',
+    renderer : Ext.util.Format.dateRenderer('Y-m-d H:i:s')
+}]);
+
+function appInit()
+{
+	view.init();
+	view.add(detailArea);
+	view.show('EDIT');
+}
+Ext.onReady(appInit);
+</script>
+<body>
+</body>
+<script>
+</script>
+</html>

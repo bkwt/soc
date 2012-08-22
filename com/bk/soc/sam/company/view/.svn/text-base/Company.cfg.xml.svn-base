@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyCompany</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			 <Fields>
+			 	<Field name="companyCodeFather" xtype="textfield">
+					<Enabled>false</Enabled><!--是否可编辑 -->
+					<Default></Default><!--默认值 -->
+				</Field>
+				<Field name="companyCode" xtype="textfield">
+					<Enabled>flase</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	<Area id="logoArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>上传单位LOGO</Text>
+					<Method>opUploadLogo</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>上传报表LOGO</Text>
+					<Method>opUploadReportLogo</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>上传Flash</Text>
+					<Method>opUploadFlash</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			 <Fields>
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

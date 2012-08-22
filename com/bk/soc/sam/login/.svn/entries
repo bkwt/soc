@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="sxr"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/sam/login"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="61"
+   kind="dir"
+   committed-date="2012-08-12T02:21:57.375000Z"/>
+<entry
+   name="ILoginService.java"
+   checksum="2eeb1a2c17c5b2c1a17fec3c0d165c3d"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="LoginBO.java"
+   checksum="ac91932b098766bd2eace9bcd83a4ca7"
+   last-author="sxr"
+   committed-rev="61"
+   text-time="2012-08-12T02:21:57.375000Z"
+   kind="file"
+   committed-date="2012-08-12T02:21:57.375000Z"/>
+<entry
+   name="component.xml"
+   checksum="51befed81645c12333b32227720a6233"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+</wc-entries>

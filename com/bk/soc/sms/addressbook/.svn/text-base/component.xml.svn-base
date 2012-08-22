@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	 
+-->
+<Component sys="SMS" id="com.bk.soc.sms.addressbook" name="通讯录" ver="1.00">
+	<Function id="SMS1000" name="公共通讯录">
+		<property name="url"           value="/view/addrlist/AddrList.js" />
+		<property name="progParams"    value="PUBLIC" />
+		<property name="tether"        value="_t1.addrType='false' and _t1.uid='@userID@'" />
+		<property name="isAudit"       value="false" />
+		<property name="needRestrict"  value="false" />
+	</Function>
+	<Function id="SMS3000" name="个人通讯录">
+		<property name="url"           value="/view/addrlist/AddrList.js" />
+		<property name="progParams"    value="PRIVATE" />
+		<property name="tether"        value="(_t1.addrType='true') and _t1.uid='@userID@'" />
+		<property name="isAudit"       value="false" />
+		<property name="needRestrict"  value="false" />
+	</Function>	
+	<Function id="SMS2000" name="公共通讯录分组">
+		<property name="url"          value="/view/addrlistgroup/AddrListGroup.js" />
+		<property name="progParams"   value="PUBLIC" />
+		<property name="tether"       value="(_t1.groupType='False') and _t1.uid='@userID@'" />
+		<property name="isAudit"      value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="SMS4000" name="个人通讯录分组">
+		<property name="url"          value="/view/addrlistgroup/AddrListGroup.js" />
+		<property name="progParams"   value="PRIVATE" />
+		<property name="tether"       value="_t1.groupType='True' and _t1.uid='@userID@'" />
+		<property name="isAudit"      value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="SelectAddrList" name="通讯录选择" isSelectPage="true">
+		<property name="url"  value="/view/selectaddrlist/selectAddrList.js" />
+	</Function>
+</Component>

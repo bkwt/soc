@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/WebContent/org/fdm/images"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="95"
+   kind="dir"
+   committed-date="2012-08-14T05:57:01.728000Z"/>
+<entry
+   name="button"
+   kind="dir"/>
+<entry
+   name="desktop"
+   kind="dir"/>
+<entry
+   name="email"
+   kind="dir"/>
+<entry
+   name="loading.gif"
+   checksum="36066fc363b3242922bd3f492573b855"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:13.598000Z"/>
+<entry
+   name="login"
+   kind="dir"/>
+<entry
+   name="logo.png"
+   checksum="d621f617d7a3c266643f8cf286908c58"
+   last-author="ds"
+   text-time="2012-08-08T05:38:23.000000Z"
+   committed-rev="2"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"
+   prop-time="2012-08-21T01:19:13.605000Z"/>
+</wc-entries>

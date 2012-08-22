@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<Hide>false</Hide><!--可选项,是否隐藏,默认不隐藏  -->
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

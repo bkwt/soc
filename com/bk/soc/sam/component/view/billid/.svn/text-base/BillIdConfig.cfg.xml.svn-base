@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterBeanDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterBeanDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出一条</Text>
+					<Method>opExportConfigData</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出查询出的</Text>
+					<Method>opExportAllConfigData</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="detailBeanArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="componentId" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	<Area id="pkruleArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterPKruleDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterPKruleDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewPKRuleWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyPKRules</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeletePKRules</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newPKRuleArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewPKRule</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="componentId" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="pkruleCode" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default>"自动生成"</Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="detailPKRuleArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backBeanDetail</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="componentId" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="pkruleCode" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="billtableName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="billtablePkfield" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="pkruleName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="pkruleNote" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="sysCode" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="fieldArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			
+			<Operaters>
+				<Operater>
+					<Text>测试</Text>
+					<Method>myTestPKRule</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewFieldWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyFields</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteFields</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newFieldArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewField</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNewFieldAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="pkruleChildArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewPKRuleDetailWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyPKRuleDetails</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeletePKRuleDetails</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newPKRuleDetailArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewPKRuleDetail</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNewPKRuleDetailAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

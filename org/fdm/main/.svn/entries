@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/WebContent/org/fdm/main"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="123"
+   kind="dir"
+   committed-date="2012-08-20T00:31:39.609375Z"/>
+<entry
+   name="Area.js"
+   checksum="d937edb0468b4f77c62a0cf8fa068a49"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="calendar.html"
+   checksum="13da6c0c9a18158584e31841b7d09436"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="historylogin.html"
+   checksum="3dc5411321ba92b3b6b7793fc4f27f2e"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="icons"
+   kind="dir"/>
+<entry
+   name="icons.json"
+   checksum="6925aa32503ab20e74c1777bc0265dc9"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="login.html"
+   checksum="362f875822e6f3668f772d8e5a8aaf84"
+   last-author="wj"
+   committed-rev="88"
+   text-time="2012-08-13T07:01:13.437000Z"
+   kind="file"
+   committed-date="2012-08-13T07:01:13.437500Z"/>
+<entry
+   name="mainPage.cfg.xml"
+   checksum="4de291672645cc4b4c21d85471a1d479"
+   last-author="sxr"
+   committed-rev="77"
+   text-time="2012-08-13T03:45:55.843000Z"
+   kind="file"
+   committed-date="2012-08-13T03:45:55.843750Z"/>
+<entry
+   name="mainPage.html"
+   checksum="64446549873a5e8c3780300af950f059"
+   last-author="ds"
+   committed-rev="122"
+   text-time="2012-08-16T09:34:57.993000Z"
+   kind="file"
+   committed-date="2012-08-16T09:34:57.993625Z"/>
+<entry
+   name="placard.html"
+   checksum="e2b6992617857e9da8f320bfdca0ed75"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="test.html"
+   checksum="d1fb0a14cba8486e28135d806626a106"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="tongji.js"
+   checksum="d41d8cd98f00b204e9800998ecf8427e"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="userJob.html"
+   checksum="135f196066be7c05cadf240328cf591d"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="warning.html"
+   checksum="d4726108e8a47824acf370dec64c4dd3"
+   last-author="ds"
+   committed-rev="123"
+   text-time="2012-08-20T00:31:39.609000Z"
+   kind="file"
+   committed-date="2012-08-20T00:31:39.609375Z"/>
+</wc-entries>

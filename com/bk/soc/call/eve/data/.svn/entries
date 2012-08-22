@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/call/eve/data"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="124"
+   kind="dir"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="TCallAdbook.java"
+   checksum="0770abc9c5c333488d571a28ac87e842"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TCallEvent.java"
+   checksum="3c4c58bf515bace99853d7c549819468"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="TCallJob.java"
+   checksum="3e4110f75ba39d763d612af3667fed69"
+   last-author="sxr"
+   committed-rev="113"
+   text-time="2012-08-16T08:39:30.931000Z"
+   kind="file"
+   committed-date="2012-08-16T08:39:30.931125Z"/>
+<entry
+   name="TCallSms.java"
+   checksum="3e48ee44a29b2c3cd18e468a63dafadb"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="TCallVisit.java"
+   checksum="40897a69fbdc28f5fc13d0b187d879a4"
+   last-author="sxr"
+   committed-rev="66"
+   text-time="2012-08-12T08:41:46.328000Z"
+   kind="file"
+   committed-date="2012-08-12T08:41:46.328125Z"/>
+<entry
+   name="VCallEvent.java"
+   checksum="f844632c479b667f24e720b1bb711706"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+</wc-entries>

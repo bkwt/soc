@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_PlacardService.js'></script>
+</head>
+<body style="overflow:hidden">
+<table width="100%" border="0">
+	<tr id="TR_TMP" style="font-size:13;display:none">
+		<td><img src="/SOC/org/fdm/images/desktop/project_dian.gif"></img> </td>
+		<td width="80%" style="cursor:hand;"><a href="#"></a>
+		</td>
+		<td width="20%" align="right" nowrap>
+		</td>
+	</tr>
+	<tr id="TR_DIAN" style="display:none">
+		<td colspan="3" background="/SOC/org/fdm/images/desktop/dian.gif"></td>
+	</tr>
+</table>
+<table width="100%" border="0">
+	<tr>
+		<td align="right">
+			<a href="#" onclick="openNewTab()"><img src="/SOC/org/fdm/images/desktop/more.gif" border="0"></img></a>
+		</td>
+	</tr>
+</table>
+<div style="font-size:13;position:absolute;left:450px;top:150px;"></div>
+</body>
+
+<script>
+
+var TR_TMP=document.getElementById('TR_TMP');
+var TR_DIAN=document.getElementById('TR_DIAN');
+
+SAM_PlacardService.queryTopPlacards(function(viewData)
+{
+	if(viewData.isSucceed)
+	{
+		for(var i=0;i<viewData.resultList.length;++i)
+		{
+			var newTR=TR_TMP.cloneNode(true);
+			newTR.style.display='';
+			
+			var newDianTR=TR_DIAN.cloneNode(true);
+			newDianTR.style.display='';
+			
+			var title=viewData.resultList[i].title;
+			
+			if(newTR.childNodes.length==3)
+			{
+				newTR.childNodes[1].innerHTML='<a onclick="showPlacardDetail(\''+viewData.resultList[i].number+'\')"><font color="#0f0061">'+title+'</font></a>';
+				newTR.childNodes[2].innerHTML='<font color="#0f0061">'+(viewData.resultList[i].publishDate.getFullYear()+'年'+(viewData.resultList[i].publishDate.getMonth()+1)+'月'+viewData.resultList[i].publishDate.getDate()+'日')+'</font>';
+			}
+			else
+			{
+				newTR.childNodes[3].innerHTML='<a onclick="showPlacardDetail(\''+viewData.resultList[i].number+'\')"><font color="#0f0061">'+title+'</font></a>';
+				newTR.childNodes[5].innerHTML='<font color="#0f0061">'+(viewData.resultList[i].publishDate.getFullYear()+'年'+(viewData.resultList[i].publishDate.getMonth()+1)+'月'+viewData.resultList[i].publishDate.getDate()+'日')+'</font>';
+			}
+			
+			TR_TMP.parentNode.insertBefore(newTR,TR_TMP);
+			TR_TMP.parentNode.insertBefore(newDianTR,TR_TMP);
+		}
+	}
+
+});
+
+function showPlacardDetail(num)
+{
+	var pp=window.open('/SOC/view?functionId=SAM0006_2&number='+num, 'placarddetail','location=no,scrollbars=no,menubar=no,status=yes,resizable=0,width=600,height=300,left=0,top=0');
+	if(pp)
+	{
+		pp.focus();
+	}
+}
+
+function openNewTab()
+{
+	parent.parent.openTab('SAM0006_1','公告','VIEW');
+}
+</script>
+</html>

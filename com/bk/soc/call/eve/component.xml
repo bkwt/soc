@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 描述: -->
+<Component sys="CALL" id="com.bk.soc.call.eve" name="事件管理"
+	ver="1.00">
+	<Function id="CALL008" name="我的办件" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/EventManage.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="_t1.callperson ='@userID@'" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+		<Function id="CALL108" name="事件管理" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/EventManage.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL100" name="事件查看" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/EventManage.js" />
+		<property name="progParams" value="VIEW" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL101" name="事件转办" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/EventManage.js" />
+		<property name="progParams" value="ZB" />
+		<property name="tether" value="(_t1.state='002' or _t1.state='003' or _t1.state='007') and _t1.code in 
+		(select billId from TTurn where state = 'start' and toorgz ='@orgzCode@')" />
+		<property name="isAudit" value="false" />
+		<property name="jobType" 		value="ZB" 					/>
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL011" name="事件管理(呼叫)" isReport="false" 
+		isSelectPage="false">
+		<property name="url" value="/view/EventManage.html" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL012" name="事件列表(呼叫)" isReport="false" 
+		isSelectPage="false">
+		<property name="url" value="/view/Event.html" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="_t1.callperson ='@userID@'" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="CALL009" name="通讯录" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/Adbook.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+</Component>

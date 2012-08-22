@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			<QueryAreaState>HIDDEN</QueryAreaState>
+			<Operaters>
+				<Operater>
+					<Text>发布新公告</Text>
+					<Method>showNewDetail</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<DbClickOperater>
+					<Text>查看</Text>
+					<Method>showDetail</Method>
+					<ConstParam>VIEW</ConstParam>
+				</DbClickOperater>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			<QueryAreaState>HIDDEN</QueryAreaState>
+			<Operaters>
+				<DbClickOperater>
+					<Text>查看</Text>
+					<Method>showDetail</Method>
+					<ConstParam>VIEW</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>查看</Text>
+					<Method>showDetail</Method>
+					<ConstParam>VIEW</ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>发布</Text>
+					<Method>opPublish</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>goBack</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="title" xtype="textfield">
+					<Enabled>true</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="text" xtype="textarea">
+					<Enabled>true</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="receiveOrgzName" xtype="trigger">
+					<Enabled>true</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="receiveOrgzs" xtype="textarea">
+					<Enabled>true</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="publishDate" xtype="datefield">
+					<Enabled>false</Enabled>
+					<Default>DateUtil.getDate()</Default>
+				</Field>
+				<Field name="publishPersonName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default>getUserSession().userName</Default>
+				</Field>
+			</Fields>
+		</Case>
+		<Case value="VIEW">
+			<Edit>false</Edit>
+			<Operaters>
+				<Operater>
+					<Text>作废</Text>
+					<Method>opInvalid</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDelete</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>goBack</Method>
+					<ConstParam>VIEW</ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

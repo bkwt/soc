@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>   
+	<Area id="modifyPassWordArea" type="DetailAreaUnit">
+		<Case value="MODIFY">
+			<Operaters>
+				<Operater>
+					<Text>修改</Text>
+					<Method>opModifyPassWord</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="logID" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default>getUserSession().logID</Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	<Area id="reLoginArea" type="DetailAreaUnit">
+		<Case value="LOGIN">
+			<Operaters>
+				<Operater>
+					<Text>登录</Text>
+					<Method>login</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="logID" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default>getUserSession().logID</Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	<Area id="smsArea" type="DetailAreaUnit">
+		<Case value="MODIFY">
+			<Operaters>
+				<Operater>
+					<Text>发送</Text>
+					<Method>send</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyCalenders</Method>
+					<ConstParam></ConstParam>
+				</Operater>				
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteCalenders</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>	
+	<Area id="newArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+		<Edit>true</Edit>
+		<SelectAble>true</SelectAble>
+		<Operaters>
+			<Operater>
+				<Text>保存</Text>
+				<Method>saveCalender</Method>
+				<ConstParam></ConstParam>
+			</Operater>	
+			<Operater>
+				<Text>保存关闭</Text>
+				<Method>saveCalenderClose</Method>
+				<ConstParam></ConstParam>
+			</Operater>
+			<Operater>
+				<Text>关闭</Text>
+				<Method>close</Method>
+				<ConstParam></ConstParam>
+			</Operater>
+		</Operaters>
+		<Fields>				
+			<Field name="type" xtype="combo">					
+				<Enabled>true</Enabled>
+				<Default>'PRIVATE'</Default>
+			</Field>					
+		</Fields>			
+	</Case>
+	</Area>	
+	<Area id="detailArea1" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>保存当页</Text>
+					<Method>saveAndModifyScratchpads</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>清除当页</Text>
+					<Method>deletePage</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>closeScratchpad</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+
+		</Case>
+	</Area>
+	<Area id="detailArea2" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>保存当页</Text>
+					<Method>saveAndModifyScratchpads</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>清除当页</Text>
+					<Method>deletePage</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>closeScratchpad</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+
+		</Case>
+	</Area>
+	<Area id="detailArea3" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>保存当页</Text>
+					<Method>saveAndModifyScratchpads</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>清除当页</Text>
+					<Method>deletePage3</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>closeScratchpad</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+
+		</Case>
+	</Area>
+</AppConfig>

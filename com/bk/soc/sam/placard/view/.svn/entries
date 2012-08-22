@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/sam/placard/view"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="92"
+   kind="dir"
+   committed-date="2012-08-14T05:54:56.649875Z"/>
+<entry
+   name="Placard.cfg.xml"
+   checksum="5a7d4ff81874aa2e8a160d223ed2a967"
+   last-author="ds"
+   committed-rev="92"
+   text-time="2012-08-14T05:54:56.649000Z"
+   kind="file"
+   committed-date="2012-08-14T05:54:56.649875Z"/>
+<entry
+   name="Placard.js"
+   checksum="e414196390ffb5f9f70049aec4f4393e"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="PlacardDetail.html"
+   checksum="4332d41aa7135093a8e7b84d6f368c55"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+</wc-entries>

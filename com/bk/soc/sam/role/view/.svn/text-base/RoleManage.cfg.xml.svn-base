@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<DbClickOperater>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>分配菜单</Text>
+					<Method>enterDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>查看用户</Text>
+					<Method>enterAllUserDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewRoleWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyRoles</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteRoles</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出</Text>
+					<Method>openPrintView</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			<!--<Operater>
+					<Text>导出</Text>
+					<Method>opExportMenuData</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			-->
+			</Operaters>
+			
+		</Case>
+	</Area>
+	
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="roleCode" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="roleName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="roleNote" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+		<Case value="SET">
+			<Edit>false</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opSaveRoleConfig</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>移除构件功能</Text>
+					<Method>removeFunctionFromMenu</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="detailAllUserArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="roleCode" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="roleName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="roleNote" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+		<Case value="SET">
+			<Edit>false</Edit>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="listArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newRoleArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewRole</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNewRoleAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="hasMenuArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+				<Operater>
+					<Text>移除选定</Text>
+					<Method>opDeleteRoleMenus</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>移除全部</Text>
+					<Method>opDeleteALL</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="SET">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+				<Operater>
+					<Text>移除选定</Text>
+					<Method>opDeleteRoleMenus</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>移除全部</Text>
+					<Method>opDeleteALL</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="noHasMenuArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+				<Operater>
+					<Text>增加选定</Text>
+					<Method>opAddNewRoleMenus</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>增加全部</Text>
+					<Method>opAddNewALL</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="SET">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+				<Operater>
+					<Text>增加选定</Text>
+					<Method>opAddNewRoleMenus</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>增加全部</Text>
+					<Method>opAddNewALL</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

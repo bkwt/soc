@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<!--<script type="text/javascript" src="/SOC/adapter/ext/ext-base.js"></script>-->
+<!--<script type="text/javascript" src="/SOC/ext-all.js"></script>-->
+<script type='text/javascript' src='/SOC/dwr/interface/userJobDAO.js'></script>
+</head>
+<body>
+
+<table width="100%" border="0">
+	<tr id="TR_TMP" style="font-size:13;display:none">
+		<td><img src="/SOC/org/fdm/images/desktop/project_dian.gif"></img> </td>
+		<td width="100%"><a href="#"></a>
+		</td>
+	</tr>
+	<tr id="TR_DIAN" style="display:none">
+		<td colspan="2" background="/SOC/org/fdm/images/desktop/dian.gif"></td>
+	</tr>
+</table>
+<table width="100%" border="0">
+	<tr>
+		<td align="right">
+			<a href="#" onclick="document.location.reload();"><img src="/SOC/org/fdm/images/button/reset.gif" border="0" alt="更新"></img></a>
+		</td>
+	</tr>
+</table>
+</body>
+
+<script>
+
+var TR_TMP=document.getElementById('TR_TMP');
+var TR_DIAN=document.getElementById('TR_DIAN');
+
+function queryJobs()
+{
+	userJobDAO.getJobs(parent.getUserSession().orgzCode,function(list)
+	{
+		for(var i=0;i<list.length;++i)
+		{
+			var newTR=TR_TMP.cloneNode(true);
+			newTR.style.display='';
+			
+			var newDianTR=TR_DIAN.cloneNode(true);
+			newDianTR.style.display='';
+			
+			if(newTR.childNodes.length==2)
+			{
+				newTR.childNodes[1].innerHTML='<font color="#0f0061" style="cursor:hand;" onclick="showJob(\''+list[i].userID+'\',\''+list[i].componentId+'\',\''+list[i].jobType+'\')">'+list[i].beanName+'</font>'+'（<font color="red">'+list[i].msgCount+'</font>）';
+			}
+			else
+			{
+				newTR.childNodes[3].innerHTML='<font color="#0f0061" style="cursor:hand;" onclick="showJob(\''+list[i].userID+'\',\''+list[i].componentId+'\',\''+list[i].jobType+'\')">'+list[i].beanName+'</font>'+'（<font color="red">'+list[i].msgCount+'</font>）';
+			}
+
+			TR_TMP.parentNode.insertBefore(newTR,TR_TMP);
+		}
+	});
+}
+
+function showJob(userID,componentId,jobType)
+{
+	userJobDAO.getUserJobURL(userID,componentId,jobType,function(viewData)
+	{
+		if(!viewData.isSucceed)
+		{
+			parent.parent.Ext.alert(viewData.message);
+		}
+		else
+		{
+			parent.parent.openTab(viewData.newPrimaryKeys.menuCode,viewData.newPrimaryKeys.menuName,viewData.newPrimaryKeys.progParams);
+		}
+		document.location.reload();
+	});
+}
+
+queryJobs();
+
+setTimeout('document.location.reload();',1800000);
+</script>
+</html>

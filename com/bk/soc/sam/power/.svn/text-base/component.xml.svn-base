@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	
+-->
+<Component sys="SAM" id="com.bk.soc.sam.power" name="数据权限管理" ver="1.00">
+	<Function id="SAM0012" name="数据权限">
+		<property name="url"  value="/view/PowerManager.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="SAM0013" name="选择页">
+		<property name="url"  value="/view/SelectPageFilter.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+</Component>

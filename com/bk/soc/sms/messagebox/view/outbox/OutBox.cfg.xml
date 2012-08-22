@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>删除</Text>
+					<Method>deleteOutBox</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			<Operaters>				
+			</Operaters>
+		</Case>
+	</Area>	
+</AppConfig>
