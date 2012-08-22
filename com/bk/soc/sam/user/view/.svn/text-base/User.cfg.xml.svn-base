@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<SelectedMemory>true</SelectedMemory>
+			<Operaters>
+				<DbClickOperater>
+					<Method>enterSetRole</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>查看</Text>
+					<Method>enterSetRole</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewUserWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteUsers</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				
+				<!-- <Operater>
+					<Text>批量分配</Text>
+					<Method>opBatchSetRole</Method>
+					<ConstParam>SET</ConstParam>
+				</Operater> -->
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewUser</Method>
+					<ConstParam>EIDT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>查询菜单</Text>
+					<Method>queryUserMenus</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>重置密码</Text>
+					<Method>opResetPassWord</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="logID" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="userID" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+				<Field name="userName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewUser</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="hasRoleArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+				<Operater>
+					<Text>移除角色</Text>
+					<Method>opDeleteRoles</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>维护角色</Text>
+					<Method>manageRole</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="ADDNEW">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="noHasRoleArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+				<Operater>
+					<Text>增加角色</Text>
+					<Method>opAddNewRoles</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>维护角色</Text>
+					<Method>manageRole</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="ADDNEW">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<PageSize>16</PageSize>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

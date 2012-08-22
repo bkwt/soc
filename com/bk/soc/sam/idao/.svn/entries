@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="sxr"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/sam/idao"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="62"
+   kind="dir"
+   committed-date="2012-08-12T02:22:50.265625Z"/>
+<entry
+   name="ICompanyDAO.java"
+   checksum="8bd669e13f412267206742109b66db6a"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IComponentDAO.java"
+   checksum="4c78bf4c982adb34e75cbd25612d54f3"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IContentDAO.java"
+   checksum="fa947440c9f842de171bf354dbc8c030"
+   last-author="sxr"
+   committed-rev="62"
+   text-time="2012-08-12T02:22:50.265000Z"
+   kind="file"
+   committed-date="2012-08-12T02:22:50.265625Z"/>
+<entry
+   name="IFileResourceDAO.java"
+   checksum="f25792facd8982abebce73c4db550335"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="ILoginDAO.java"
+   checksum="d5ef118de9a91f3c739d396d0ec07d6b"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IMailFileDAO.java"
+   checksum="376b9a1db3eacfd216363844bd683c56"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IMailMessageStatusDAO.java"
+   checksum="26751164f8b85d014117b5ae2576cd29"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IMenuDAO.java"
+   checksum="232f8e823b3ac04fe08f0af15e0738ce"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IRoleMenuDAO.java"
+   checksum="a45c254caaf462b5d132121224439f22"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IToolConfigDAO.java"
+   checksum="2959f424132584193a65bb77d6a1a5c5"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IUserDAO.java"
+   checksum="8750df8a7032634d1aab9842e513768b"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="IUserRoleDAO.java"
+   checksum="1946b01a11e6b01fddc4c9a6d48d7aad"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+</wc-entries>

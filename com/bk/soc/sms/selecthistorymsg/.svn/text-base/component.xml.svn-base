@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	
+-->
+<Component sys="SMS" id="com.bk.soc.sms.selecthistorymsg" name="选择历史短信" ver="1.00">
+	<Function id="SelectHistoryMsg" name="选择历史短信" isSelectPage="true">
+		<property name="url"  value="/view/selectHistoryMsg.js" />
+	</Function>
+</Component>

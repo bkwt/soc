@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+	<!--		<QueryAreaState>EXPAND</QueryAreaState>-->
+<!--			<DefaultSortField dir="DESC">code</DefaultSortField>-->
+<!--			<QueryOnShow>true</QueryOnShow>-->
+<!--			<NeedPersonPower>true</NeedPersonPower>-->
+			<Operaters>
+				<DbClickOperater>
+					<Method>opTest</Method>
+					<ConstParam></ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewSystemWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifySystems</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteSystems</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewSystem</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				
+			</Operaters>
+			<Fields>
+				
+			</Fields>
+		</Case>
+	</Area>
+	<Area id="auditArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Title>审核信息</Title>
+			<Edit>false</Edit>
+			<Operaters>
+
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<Operaters>
+
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

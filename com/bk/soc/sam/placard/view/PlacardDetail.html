@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_PlacardService.js'></script>
+<title>公告</title>
+</head>
+<body style="background:eef4f9;">
+<table width="100%">
+	<tr>
+		<td id="title" align="center" style="font-family:黑体">
+		</td>
+	</tr>
+	<tr>
+		<td id="publishDate" align="right" style="font-family:黑体;font-size:13px;">
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<textarea id="text" rows="13" cols="72" style="overflow-y:hidden;background-color: transparent; text-align:left; fason:expression(this.readOnly=true); border-style: solid; border-width: 0px;border-color:#000;background:eef4f9;"></textarea>
+		</td>
+	</tr>
+</table>
+</body>
+<script>
+
+var request = 
+{ 
+	getParameter : function(val)
+	{ 
+	var uri = window.location.search; 
+	var re = new RegExp("" +val+ "=([^&?]*)", "ig"); 
+	return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null); 
+	} 
+};
+
+SAM_PlacardService.queryPlacard(request.getParameter('number'),function(viewData)
+{
+	if(viewData.isSucceed)
+	{
+		if(viewData.resultList.length>0)
+		{
+			var publishDate=viewData.resultList[0].publishDate;
+			
+			document.getElementById('title').innerText=viewData.resultList[0].title;
+			document.getElementById('publishDate').innerText=publishDate.getFullYear()+'年'+(publishDate.getMonth()+1)+'月'+publishDate.getDate()+'日';
+			document.getElementById('text').innerText=viewData.resultList[0].text;
+		}
+	}
+});
+
+</script>
+</html>

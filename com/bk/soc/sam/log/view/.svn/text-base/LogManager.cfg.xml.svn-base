@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>false</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>导出</Text>
+					<Method>showExportWin</Method>
+					<ConstParam>EXPORT</ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="exportArea" type="DetailAreaUnit">
+		<Case value="EXPORT">
+			<Operaters>
+				<Operater>
+					<Text>导出</Text>
+					<Method>opExportLog</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

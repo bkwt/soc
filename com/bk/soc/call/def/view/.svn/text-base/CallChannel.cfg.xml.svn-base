@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+<!--			<QueryAreaState>EXPAND</QueryAreaState>-->
+<!--			<DefaultSortField dir="DESC">code</DefaultSortField>-->
+<!--			<QueryOnShow>true</QueryOnShow>-->
+<!--			<NeedPersonPower>true</NeedPersonPower>-->
+			<Operaters>
+				<Operater>
+					<Text>新增</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>showNewChannelWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>opModifyChannels</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>opDeleteChannels</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewChannel</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNewChannelAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="code" xtype="textfield">
+					<Enabled>false</Enabled><!--是否可编辑 -->
+					<Default>"自动生成"</Default><!--默认值 -->
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

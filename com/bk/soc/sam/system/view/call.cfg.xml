@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>false</SelectAble>
+	<!--		<QueryAreaState>EXPAND</QueryAreaState>-->
+<!--			<DefaultSortField dir="DESC">code</DefaultSortField>-->
+<!--			<QueryOnShow>true</QueryOnShow>-->
+<!--			<NeedPersonPower>true</NeedPersonPower>-->
+			<Operaters>
+				<DbClickOperater>
+					<Method>opTest</Method>
+					<ConstParam></ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>新增</Text>
+					<Method>showNewSystemWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifySystems</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteSystems</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>测试</Text>
+					<Method>opTest</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewSystem</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNewSystemAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

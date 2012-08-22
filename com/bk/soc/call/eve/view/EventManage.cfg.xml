@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<DbClickOperater>
+					<Method>opshowpagetwo</Method>
+					<ConstParam>ADDNEWCON</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>查看</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>opshowpagetwo</Method>
+					<ConstParam>ADDNEWCON</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>新增</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>showNewEventWin</Method>
+					<ConstParam>ADDNEW</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除</Text>
+					<Icon>/SOC/org/fdm/images/button/delete1.gif</Icon>
+					<Method>opDeleteEvent</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+				<DbClickOperater>
+					<Method>opshowpagetwo</Method>
+					<ConstParam>VIEW</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>查看</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>opshowpagetwo</Method>
+					<ConstParam>VIEW</ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="ZB">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+				<DbClickOperater>
+					<Method>opshowpagetwo</Method>
+					<ConstParam>ZB</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>查看</Text>
+					<Icon>/SOC/org/fdm/images/button/new1.gif</Icon>
+					<Method>opshowpagetwo</Method>
+					<ConstParam>ZB</ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewEvent</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>保存关闭</Text>
+					<Method>opAddNewEventAndClose</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<!-- <Operater> <Text>转办</Text> <Method>opAddNewEvent</Method> <ConstParam></ConstParam> 
+					</Operater> -->
+			</Operaters>
+
+		</Case>
+		<Case value="ADDNEWEVENT"><!-- 设备调用页面 -->
+			<BillName>事件办理</BillName>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opAddNewEvent</Method>
+					<ConstParam>ShowNewConversionWin</ConstParam>
+				</Operater>
+			</Operaters>
+
+		</Case>
+	</Area>
+	<Area id="detailAreaPageTwo" type="DetailAreaUnit">
+		<Case value="ADDNEWCON">
+			<BillName>事件办理</BillName>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opModifyEvent</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>转办</Text>
+					<Method>ShowNewConversionWin</Method>
+					<ConstParam>ADDNEWCONN</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>处理</Text>
+					<Method>opPass</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>督办</Text>
+					<Method>ShowJobWin</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>回访</Text>
+					<Method>ShowVisitWin</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>短信</Text>
+					<Method>ShowSmsWin</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMainPage</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<BillName>事件办理</BillName>
+			<Edit>false</Edit>
+			<Operaters>
+
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMainPage</Method>
+					<ConstParam>VIEW</ConstParam>
+				</Operater>
+
+			</Operaters>
+			<Fields>
+			</Fields>
+		</Case>
+		<Case value="ZB">
+			<BillName>事件办理</BillName>
+			<Edit>false</Edit>
+			<Operaters>
+				<Operater>
+					<Text>退回</Text>
+					<Method>opRejec</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>转办</Text>
+					<Method>ShowNewConversionWin</Method>
+					<ConstParam>ADDNEWCONN</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>处理</Text>
+					<Method>opPass</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+
+
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMainPage</Method>
+					<ConstParam>ZB</ConstParam>
+				</Operater>
+
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailConversion" type="DetailAreaUnit">
+		<Case value="ADDNEWCONN">
+			<Operaters>
+				<Operater>
+					<Text>转办</Text>
+					<Method>turnBill</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailConversion1" type="DetailAreaUnit">
+		<Case value="ADDCONVERSION">
+			<Operaters>
+				<Operater>
+					<Text>转办</Text>
+					<Method>turnBill</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>结束</Text>
+					<Method>opPass</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>关闭</Text>
+					<Method>close</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="selectForm" type="DetailAreaUnit">
+		<Case value="selectform">
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="listConversion" type="ListAreaUnit">
+		<Case value="ADDNEWCON">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+
+			</Operaters>
+
+		</Case>
+		<Case value="ZB">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="visitConversion" type="ListAreaUnit">
+		<Case value="ADDNEWCON">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+		<Case value="ZB">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="smsListArea" type="ListAreaUnit">
+		<Case value="ADDNEWCON">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+		<Case value="ZB">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="jobListArea" type="ListAreaUnit">
+		<Case value="ADDNEWCON">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+		<Case value="ZB">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+		<Case value="VIEW">
+			<SelectAble>false</SelectAble>
+			<Operaters>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailVisit" type="DetailAreaUnit">
+		<Case value="ADDVISIT">
+		
+			<Operaters>
+				<Operater>
+					<Text>回访</Text>
+					<Method>visit</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+
+		</Case>
+	</Area>
+	
+	<Area id="smsArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>发送</Text>
+					<Method>send</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="jobArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Operaters>
+				<Operater>
+					<Text>发送</Text>
+					<Method>opSaveCallJob</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+</AppConfig>

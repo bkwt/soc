@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="sxr"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/sam/shared/data"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="59"
+   kind="dir"
+   committed-date="2012-08-12T02:18:34.390625Z"/>
+<entry
+   name="AreaInfo.java"
+   checksum="20f7d5c7f513c8ffee5372c0924a621d"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="QueryData.java"
+   checksum="29aad8d99296f9c22de099d24b6312ef"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TFieldsRanking.java"
+   checksum="614732553a217c76cf21387c19c7278a"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TOperaterLog.java"
+   checksum="4349ae3f3269b371a46a7cd4338ebff2"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TQueryProject.java"
+   checksum="2b6e4dea81e8273556cbc03746f4823f"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TShortcut.java"
+   checksum="7e9e5e1d7685b66449d397bc02f1a437"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TTurn.java"
+   checksum="96676afcd47a99015dc33216879d3230"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TUserJob.java"
+   checksum="e66d1d5be23582f67141fa078d035d9b"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TUserSession.java"
+   checksum="7636f927bc2aa06058b0b9846df2c3ed"
+   last-author="sxr"
+   committed-rev="59"
+   text-time="2012-08-12T02:18:34.390000Z"
+   kind="file"
+   committed-date="2012-08-12T02:18:34.390625Z"/>
+<entry
+   name="ViewData.java"
+   checksum="6b4a0214d2bd49b1283993e1425ff0e6"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+</wc-entries>

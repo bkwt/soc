@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AppConfig>
+	<Area id="mainArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>false</SelectAble>
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterBeanDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterBeanDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>导出</Text>
+					<Method>opExportSQL</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	<Area id="detailBeanArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<Operaters>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="methodArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>false</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<DbClickOperater>
+					<Text>配置</Text>
+					<Method>enterMethodDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</DbClickOperater>
+				<Operater>
+					<Text>配置</Text>
+					<Method>enterMethodDetail</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+<!--				<Operater>-->
+<!--					<Text>新增</Text>-->
+<!--					<Method>enterAddNewMethod</Method>-->
+<!--					<ConstParam>ADDNEW</ConstParam>-->
+<!--				</Operater>-->
+				<Operater>
+					<Text>删除</Text>
+					<Method>opDeleteMethods</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>获取查询方法</Text>
+					<Method>opGetMethods</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="detailMethodArea" type="DetailAreaUnit">
+		<Case value="ADDNEW">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opSaveQueryPowers</Method>
+					<ConstParam>EDIT</ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>保存</Text>
+					<Method>opSaveQueryPowers</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>返回</Text>
+					<Method>backToMain</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+				<Field name="methodName" xtype="textfield">
+					<Enabled>false</Enabled>
+					<Default></Default>
+				</Field>
+			</Fields>
+		</Case>
+	</Area>
+	
+	<Area id="powerArea" type="ListAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<SelectAble>true</SelectAble>
+			<Operaters>
+				<Operater>
+					<Text>添加人员</Text>
+					<Method>addPerson</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>添加部门</Text>
+					<Method>addOrgz</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+				<Operater>
+					<Text>删除记录</Text>
+					<Method>opRemoveQueryPowers</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+		</Case>
+	</Area>
+	
+	<Area id="newOrgzArea" type="DetailAreaUnit">
+		<Case value="EDIT">
+			<Edit>true</Edit>
+			<Operaters>
+				<Operater>
+					<Text>确定</Text>
+					<Method>opAddQueryOrgzPower</Method>
+					<ConstParam></ConstParam>
+				</Operater>
+			</Operaters>
+			<Fields>
+
+			</Fields>
+		</Case>
+	</Area>
+</AppConfig>

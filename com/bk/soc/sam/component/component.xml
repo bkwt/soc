@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	
+-->
+<Component sys="SAM" id="com.bk.soc.sam.component" name="构件管理" ver="1.00">
+	<Function id="SAM0008" name="审核管理">
+		<property name="url"  value="/view/audit/AuditFlowConfig.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="SAM0009" name="编码管理">
+		<property name="url"  value="/view/billid/BillIdConfig.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="SelectComponent" name="选择构件" isSelectPage="true">
+		<property name="url"  value="/view/select/selectComponent.js" />
+	</Function>
+	
+	<Function id="SelectFunction" name="选择菜单" isSelectPage="true">
+		<property name="url"  value="/view/select/selectFunction.js" />
+	</Function>
+</Component>

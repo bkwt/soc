@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/call/eve/view"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="124"
+   kind="dir"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="Adbook.cfg.xml"
+   checksum="91e12dcbdc7c935dbf554811cdaa2c1f"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="Adbook.js"
+   checksum="37e9d5edc204c0028a76b9dc1ebd341f"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="Event.cfg.xml"
+   checksum="0e8c97b4c3c9791721e045869d698e4f"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="Event.html"
+   checksum="6fab91b81363a2365981faf0108b6b10"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="EventManage.cfg.xml"
+   checksum="58565d75f72f847013b1567b66290d8b"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="EventManage.html"
+   checksum="9bfac5b5cf3a9ae70932bc1265e336b0"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+<entry
+   name="EventManage.js"
+   checksum="290d870dff842e4ff60dd65e8621c6ae"
+   last-author="ds"
+   committed-rev="124"
+   text-time="2012-08-20T00:32:39.437000Z"
+   kind="file"
+   committed-date="2012-08-20T00:32:39.437500Z"/>
+</wc-entries>

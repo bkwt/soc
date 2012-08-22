@@ -1,0 +1,243 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/SOC/resources/css/ext-all.css" />
+<script type='text/javascript' src='/SOC/dwr/engine.js'></script>
+<script type="text/javascript" src="/SOC/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="/SOC/ext-all.js"></script>
+
+<script type='text/javascript' src='/SOC/org/fdm/core/util.js'></script>
+<script type='text/javascript' src='/SOC/dwr/interface/SAM_MessageService.js'></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/page/PageUnit.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/area/TreeAreaUnit.js"></script>
+<script type="text/javascript" src="/SOC/org/fdm/core/tools/util.js"></script>
+<script type="text/javascript" src="/SOC/view?functionId=SelectPerson"></script> 
+</head>
+<script>
+
+function checkState(v){
+	if(v != '未读') 
+		return '已读';
+	return v;
+}
+var typeStore = new Ext.data.SimpleStore({
+	fields: ['CH','EN'],
+	data : [['选择所有',''],['个人消息','个人消息'],['系统消息','系统消息']]
+});
+
+var stateStore = new Ext.data.SimpleStore({
+	fields: ['CH','EN'],
+	data : [['选择所有',''],['未读','未读'],['已读','已读']]
+});
+
+//--------------------------------------
+function selectPerson(e)
+{
+	showSelectPerson(e,'SINGLE',setPerson,'');
+}
+function setPerson(siteTag,voList)
+{
+	if(siteTag.getSelectedCount()==0)
+	{
+		Ext.alert('没有选定的记录');
+		return;
+	}
+	
+	if(voList.length==0)
+	{
+		siteTag.setField('receiverCode','');
+		siteTag.setField('receiverName','');
+	}
+	else
+	{
+		siteTag.setField('receiverCode',voList[0].code);
+		siteTag.setField('receiverName',voList[0].name);
+	}
+}
+//--------------------p1-----------------------------------
+var page1 = new PageUnit('page1');
+
+var mainArea=new TreeAreaUnit('mainArea');
+mainArea.setCm([
+{
+	header: "消息标题",
+	dataIndex: 'messageTitle',
+	width: 100,
+	sort:true,
+	hidden:true,
+	editor: null
+},
+{
+	header: "消息内容",
+	dataIndex: 'messageText',
+	width: 160,
+	editor: null
+},
+{
+	header: "发送人",
+	dataIndex: 'senderName',
+	width: 55,
+	sort:true,
+	editor: null
+},
+{
+	header: "接受人",
+	dataIndex: 'receiverCode',
+	hidden:true,
+	width: 65,
+	editor: null
+},
+{
+	header: "接受人",
+	dataIndex: 'receiverName',
+	width: 55,
+	sort:true,
+	editor: null
+},
+{
+	header: "发送时间",
+	dataIndex: 'sendDate',
+	renderer: DateUtil.formatDateTime,
+	width: 125,
+	sort:true,
+	editor: null
+},
+{
+	header: "消息类型",
+	dataIndex: 'messageType',
+	width: 60,
+	sort:true,
+	editor: null
+},
+{
+	header: "状态",
+	dataIndex: 'state',
+	renderer:checkState,
+	width: 40,
+	sort:true,
+	editor: null
+}]);
+mainArea.addToQueryPanel([
+	{xtype:'textfield',name:'senderName',rule:"@NAME@ LIKE '%@VALUE@%'",fieldLabel:'发送人'},
+	{xtype:'textfield',name:'receiverName',rule:"@NAME@ LIKE '%@VALUE@%'",fieldLabel:'接收人'},
+	{xtype:'datefield',name:'sendDate',rule:"DATEDIFF(day,'@VALUE@',sendDate)>=0",fieldLabel:'日期'},
+	{xtype:'datefield',name:'sendDate',rule:"DATEDIFF(day,'@VALUE@',sendDate)<=0",fieldLabel:'至'},
+	{xtype:'combo',name:'messageType',fieldLabel:'消息类型',store:typeStore,valueField:'EN',displayField:'CH'}
+]);
+
+function appInit()
+{
+	
+	page1.init();
+	page1.add(mainArea);
+	mainArea.setExpandFunction(mainArea.queryPersonNodes);
+	mainArea.refreshFor(mainArea.queryTheMessages);
+	
+	page1.show(request.getParameter('progParams'));
+	mainArea.showTreeData(putRoot('联系人'));
+	
+	mainArea.queryMessages();
+	
+	hideLoading();
+	
+	//mainArea.getTree().getNodeById('root').expand(); 
+	
+}
+
+mainArea.queryMessages=function()
+{
+	SAM_MessageService.queryMessages(mainArea.getAreaInfo(),'root',function(viewData)
+	{
+		mainArea.showViewData(viewData);
+	});
+	
+}
+
+mainArea.queryTheMessages=function(id)
+{
+	SAM_MessageService.queryMessages(mainArea.getAreaInfo(),id,function(viewData)
+	{
+		mainArea.showViewData(viewData);
+	});
+}
+
+mainArea.queryPersonNodes=function(id)
+{
+	setAppContext('code',id);
+	if(id != 'root') return;
+	SAM_MessageService.queryMessageNodes(id,function(viewData)
+	{
+		mainArea.showTreeData(viewData);
+	});
+}
+
+mainArea.opDeleteMessages=function()
+{
+	var list=mainArea.getSelected();
+	
+	if(list.length==0)
+	{
+		Ext.alert('请勾选记录');
+		return;
+	}
+	
+	if(Ext.confirm('确认删除吗?',function(btn)
+	{
+		if(btn=='yes')
+		{
+			SAM_MessageService.opDeleteMessages(list,function(viewData)
+			{
+				if(!viewData.isSucceed)
+				{
+					Ext.alert('删除失败');
+				}
+				else
+				{
+					mainArea.queryTheMessages();
+				}
+			});
+		}
+	}));
+}
+
+mainArea.openChatWindow=function(id)
+{
+	var obj=mainArea.getSigned();
+	if(!obj){
+		parent.parent.showMessageWin(null);
+	}else
+	{
+		var receiverName;
+		var message = "<div style='margin:20px 5px 10px 5px'> &nbsp;&nbsp;"
+						+ DateUtil.formatDateTime(obj.sendDate) + " <b>"
+						+ obj.senderName + "</b> 对 <b> "
+						+ obj.receiverName + "</b> 说:"
+						+ obj.messageText + "</div>";
+		if(obj.senderCode == getUserSession().userID){
+			parent.parent.showMessageWin({'id':obj.receiverCode,'name':obj.receiverName,'msg':message});
+		}
+		else{
+			parent.parent.showMessageWin({'id':obj.senderCode,'name':obj.senderName,'msg':message});
+			if(obj.state == '未读'){
+				SAM_MessageService.changeState([obj]);
+			}
+		}
+		
+		//document.getElementById('publicChat').innerHTML = message;
+	}
+	
+}
+
+Ext.onReady(appInit);
+function putRoot(rootName){
+var root = {hid:'root',id:'root',name:rootName,pid:'root',isLeaf:0};
+var viewData = {};
+    viewData.resultList = [];
+    viewData.resultList.push(root);
+    return viewData;
+}
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	1.部门-岗位-人员 
+-->
+<Component sys="MDM" id="com.bk.soc.mdm.human" name="组织结构管理" ver="1.00">
+	<Function id="MDMB0101" name="部门维护">
+		<property name="url"  value="/view/orgz/Orgz.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="MDMB0201" name="岗位维护">
+		<property name="url"  value="/view/pos/Pos.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="MDMB0301" name="人员维护">
+		<property name="url"  value="/view/person/Person.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+    <Function id="SelectOrgz" name="选择部门" isSelectPage="true">
+		<property name="url"  value="/view/selectorgz/selectOrgz.js" />
+	</Function>
+	<Function id="SelectPerson" name="选择人员" isSelectPage="true">
+		<property name="url"  value="/view/selectperson/selectPerson.js" />
+	</Function>
+	<Function id="SelectPos" name="选择角色" isSelectPage="true">
+		<property name="url"  value="/view/selectpos/selectPos.js" />
+	</Function>
+</Component>

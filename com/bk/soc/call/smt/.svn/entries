@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/call/smt"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="100"
+   kind="dir"
+   committed-date="2012-08-15T08:56:45.024875Z"/>
+<entry
+   name="CallEventBO.java"
+   checksum="08f08eea3698729889d007349564fbe8"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="CategoryStatisBO.java"
+   checksum="fff733df6ab472bf3f1188dd4459e684"
+   last-author="sxr"
+   committed-rev="84"
+   text-time="2012-08-13T05:53:57.593000Z"
+   kind="file"
+   committed-date="2012-08-13T05:53:57.593750Z"/>
+<entry
+   name="CategoryStatisService.java"
+   checksum="bb427ece679b25b8aeb64ac3d493046a"
+   last-author="sxr"
+   committed-rev="84"
+   text-time="2012-08-13T05:53:57.593000Z"
+   kind="file"
+   committed-date="2012-08-13T05:53:57.593750Z"/>
+<entry
+   name="ICallEventService.java"
+   checksum="c72e1e36e9ba1fd0a5c45a52fb5257bf"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="component.xml"
+   checksum="d2ce5e95e3f0982acba3bde4eacc9f61"
+   last-author="ds"
+   committed-rev="100"
+   text-time="2012-08-15T08:56:45.024000Z"
+   kind="file"
+   committed-date="2012-08-15T08:56:45.024875Z"/>
+<entry
+   name="view"
+   kind="dir"/>
+</wc-entries>

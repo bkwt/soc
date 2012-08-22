@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+描述:
+	
+-->
+<Component sys="SMS" id="com.bk.soc.sms.messagebox" name="短信信箱管理" ver="1.00">
+	<Function id="SMS0002" name="收件信箱">
+		<property name="url"  value="/view/inbox/InBox.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="SMS0003" name="待发信箱">
+		<property name="url"  value="/view/outbox/OutBox.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="_t1.sender='@userID@'" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="SMS0004" name="新建">
+		<property name="url"  value="/view/send/Send.js" />
+		<property name="progParams" value="SEND" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" /> 
+	</Function>
+	<Function id="SMS1004" name="新建(呼叫)">
+		<property name="url"  value="/view/send/Send.html" />
+		<property name="progParams" value="SEND" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" /> 
+	</Function>
+	<Function id="SMS0005" name="发件信箱">
+		<property name="url"  value="/view/sendedbox/SendedOutBox.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="_t1.sender='@userID@'" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	
+	<Function id="SMS0006" name="失败信箱">
+		<property name="url"  value="/view/badoutbox/BadOutBox.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="_t1.sender='@userID@'" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="SMS0007" name="草稿信箱">
+		<property name="url"  value="/view/historybox/HistoryMsg.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="_t1.uid='@userID@'" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>	
+	<Function id="SMS00011" name="统计查询">
+		<property name="url"  value="/view/statistic/Statistic.js" />
+		<property name="progParams" value="VIEW" />
+		<property name="tether" value="" /><!--_t1.code='@userID@'  -->
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+</Component>

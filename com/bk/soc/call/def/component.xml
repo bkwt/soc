@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 描述: -->
+<Component sys="CALL" id="com.bk.soc.call.def" name="基础定义"
+	ver="1.00">
+	<Function id="CALL001" name="类型定义" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/TypeDefine.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL002" name="渠道定义" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/CallChannel.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL003" name="类别定义" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/Category.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL006" name="状态维护" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/CallState.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	<Function id="CALL010" name="通讯录分组" isReport="false"
+		isSelectPage="false">
+		<property name="url" value="/view/CallAdlist.js" />
+		<property name="progParams" value="EDIT" />
+		<property name="tether" value="" />
+		<property name="isAudit" value="false" />
+		<property name="needRestrict" value="false" />
+	</Function>
+	 <Function id="SelectCategory" name="选择类别" isSelectPage="true">
+		<property name="url"  value="/view/selectCategory.js" />
+	</Function>
+	<!-- 向外提供 -->
+		
+	
+</Component>

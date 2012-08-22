@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://192.168.1.207/svn/socv1.0.8.8"
+   name=""
+   revision="126"
+   last-author="ds"
+   url="https://192.168.1.207/svn/socv1.0.8.8/SOCV4/src/com/bk/soc/call/def/view"
+   uuid="66b75891-96a6-e541-85a7-a33a44b27ecb"
+   committed-rev="92"
+   kind="dir"
+   committed-date="2012-08-14T05:54:56.649875Z"/>
+<entry
+   name="CallAdlist.cfg.xml"
+   checksum="5990008d0fe5dcbe8b5590f931caf5ce"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="CallAdlist.js"
+   checksum="e85522afcb3a2e31c0c2fe602870410a"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="CallChannel.cfg.xml"
+   checksum="e2c072dd7c9dab6e1968d89e03eca1bf"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="CallChannel.js"
+   checksum="aa377134f80d68bf633c6acf9cf4cada"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="CallState.cfg.xml"
+   checksum="b4b2bb2d2e49b604817badb92c03c6b5"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="CallState.js"
+   checksum="e56040096845f807061e4dde43d0768f"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="Category.cfg.xml"
+   checksum="cd6ecde9f9e04e1b9e1d88554c0d992d"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="Category.js"
+   checksum="208bc9d401f30e914f112709801b5d33"
+   last-author="ds"
+   committed-rev="92"
+   text-time="2012-08-14T05:54:56.649000Z"
+   kind="file"
+   committed-date="2012-08-14T05:54:56.649875Z"/>
+<entry
+   name="TypeDefine.cfg.xml"
+   checksum="c596228cf88e66f4dda4cb1a3695d3bb"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="TypeDefine.js"
+   checksum="19efc4b77bcdddf94ab4c2d62e8c6658"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+<entry
+   name="selectCategory.js"
+   checksum="35fc3e6460c069cda882102fcb6572b3"
+   last-author="ds"
+   committed-rev="2"
+   text-time="2012-08-08T05:38:23.000000Z"
+   kind="file"
+   committed-date="2012-08-08T05:38:23.000000Z"/>
+</wc-entries>
